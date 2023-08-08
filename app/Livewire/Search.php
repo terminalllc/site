@@ -21,7 +21,7 @@ class Search extends Component
         if ($this->query) {
             $car = Car::search($this->search)->first();
 
-            $this->dispatch('searchResult', car: $car ?? null);
+            $this->dispatch('searchResult', car: $car ?? new Car);
 
         }
 
