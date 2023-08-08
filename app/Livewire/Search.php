@@ -20,8 +20,10 @@ class Search extends Component
     {
         if ($this->query) {
             $car = Car::search($this->search)->first();
-
-            $this->dispatch('searchResult', car: $car);
+            
+            if ($car) {
+                $this->dispatch('searchResult', car: $car);
+            }
         }
 
         return view('livewire.search');
