@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 class FileController extends Controller
 {
     const UNZIP_DIRECTORY = 'unzip/';
+
     public function uploadImage(Request $request)
     {
 
@@ -27,6 +28,10 @@ class FileController extends Controller
         $fileName = $file->hashName();
 
         $path = Storage::url($file->storeAs('', $fileName, 'public'));
+        
+        if (!$request->has('type')) {
+            $this->optimizationFile($fileName);
+        }
 
         return new JsonResponse(
             $path,
@@ -116,15 +121,16 @@ class FileController extends Controller
         ], 200);
 
     }
-    public function optimizationFile($uploadedFile, $directory)
+
+    public function optimizationFile($uploadedFile)
     {
 
-        $filename = $uploadedFile->getClientOriginalName();
+       // $filename = $uploadedFile->getClientOriginalName();
 
-        return Image::load($uploadedFile)
+        return Image::load(public_path('storage/') . $uploadedFile)
             ->fit(Manipulations::FIT_FILL, 900, 675)
             ->optimize()
-            ->save('images/' . $directory . $filename);
+            ->save('storage/' . $uploadedFile);
     }
 
     public function optimizationFiles(Request $request)

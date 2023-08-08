@@ -27,7 +27,7 @@
                     </template>
                     <text-input v-model.trim="form.google_map_link" :error="form.errors.google_map_link"
                         class-div="lg:w-1/2" label="Google Map" />
-                    <file-input-image v-model.trim="form.logo" :error="form.errors.logo" class-div="lg:w-1/2" label="Logo" />
+                    <file-input-logo v-model.trim="form.logo" :error="form.errors.logo" class-div="lg:w-1/2" label="Logo" />
                     <file-input-video v-model.trim="form.video" :error="form.errors.video" class-div="lg:w-1/2"
                         label="Background video" />
                 </div>
@@ -44,7 +44,7 @@
 import Layout from "@/Shared/Layout.vue";
 import LoadingButton from "@/Shared/LoadingButton.vue";
 import TextInput from "@/Shared/TextInput.vue";
-import FileInputImage from "@/Shared/FileInputImage.vue";
+import FileInputLogo from "@/Shared/FileInputLogo.vue";
 import FileInputVideo from "@/Shared/FileInputVideo.vue";
 
 import { Head, Link, useForm } from "@inertiajs/vue3";
@@ -53,7 +53,7 @@ export default {
     components: {
         LoadingButton,
         TextInput,
-        FileInputImage,
+        FileInputLogo,
         FileInputVideo,
     },
     layout: Layout,
