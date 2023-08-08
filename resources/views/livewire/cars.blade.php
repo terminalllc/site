@@ -1,5 +1,5 @@
 <div>
-    @if (count($car))
+    @if (count((array)$car))
     <section class="new-products">
         <div class="site-width">
             <div class="new-products-block">
