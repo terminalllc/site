@@ -14,6 +14,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta http-equiv="x-ua-compatible" content="IE=Edge" />
 
+    
     @vite(['resources/assets/sass/front.scss','resources/assets/js/front.js'])
     @livewireStyles
 </head>
