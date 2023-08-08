@@ -59,7 +59,7 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Car $car)
+    public function update(CarsRequest $request, Car $car)
     {
         $car->update($request->validated());
 
@@ -71,6 +71,8 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        //
+        $car->delete();
+
+        return Redirect::route('cars.index')->with('success', 'Car deleted.');
     }
 }

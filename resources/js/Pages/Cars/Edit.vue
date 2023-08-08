@@ -117,7 +117,7 @@
                 </div>
                 <div class="flex items-center justify-end px-8 py-4 w-full bg-gray-100 border-t border-gray-200">
                     <loading-button :disabled="form.processing" :loading="form.processing" class="btn-green"
-                        type="submit">Create</loading-button>
+                        type="submit">Update</loading-button>
                 </div>
             </form>
         </div>
