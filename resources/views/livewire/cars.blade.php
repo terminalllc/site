@@ -1,5 +1,5 @@
 <div>
-    @if ($car)
+    @if (count($car))
     <section class="new-products">
         <div class="site-width">
             <div class="new-products-block">

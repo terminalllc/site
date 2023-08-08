@@ -20,7 +20,7 @@ class Cars extends Component
     }
 
     #[On('searchResult')]
-    public function searchResult($car=null)
+    public function searchResult($car=[])
     {
         $this->car= $car;
     }
