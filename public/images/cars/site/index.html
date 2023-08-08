@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name = "format-detection" content = "telephone=no" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/superfish.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link href='//fonts.googleapis.com/css?family=Domine:400,700' rel='stylesheet' type='text/css'>
+    <!-- font-awesome font -->
+    <link rel="stylesheet" href="font/font-awesome.css" type="text/css" media="screen">
+    <!--<![endif]-->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.1.1.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/jquery.equalheights.js"></script>
+    <script src="js/superfish.js"></script>
+    <script src="js/jquery.mobilemenu.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/jquery.tools.min.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+     
+     <!--[if (gt IE 9)|!(IE)]><!-->
+     <script src="js/jquery.mobile.customized.min.js"></script>
+     <!--<![endif]-->
+     
+     <script>
+     
+        $(document).ready(function() {
+            jQuery('#camera_wrap_3').camera({
+                fx: 'simpleFade',
+                height: '35,1%',
+                pagination: false,
+                thumbnails: true,
+                playPause: false,
+                navigation: true,
+                time: 8000,
+                transPeriod: 700,
+                loader: false
+            });
+            $('.pix_thumb img').wrap('<span class="border-1-wrap" />');
+            $('.border-1-wrap').append('<span class="s-bord-1" />');
+            $('.border-1-wrap').append('<span class="s-bord-2" />');
+            $('.border-1-wrap').append('<span class="s-bord-3" />');
+            $('.border-1-wrap').append('<span class="s-bord-4" />');
+            
+            $(".tabs1 ul").tabs(".tab_container .tab_content");
+            
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+     </script>
+     <!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+         </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+   		<script src="js/html5shiv.js"></script>
+    	<link rel="stylesheet" type="text/css" media="screen" href="css/ie.css">
+    <![endif]-->
+     </head>
+     <body>
+<!--==============================header=================================-->
+<header>
+    <div class="container_12">
+        <div class="row">
+            <div class="grid_12">
+                <h1><a href="index.html">WeatherChannel</a></h1>
+                <div class="fright">
+                    <div class="clearfix">
+                        <ul class="top_menu clearfix">
+                            <li><a href="#">Sign In</a>|</li>
+                            <li><a href="#">Join</a>|</li>
+                            <li><a href="#">Settings</a></li>
+                        </ul>
+                        <div class="temp clearfix"><a href="#" class="cels">C&deg;</a><a href="#" class="far">F&deg;</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="grid_12">
+                <nav class="full-width">
+                    <ul class="sf-menu clearfix">
+                        <li class="current"><a href="index.html">Home</a></li>
+                        <li><a href="index-1.html">Weather guides</a>
+                            <ul>
+                                <li><a href="#">Daily Briefing</a></li>
+                                <li><a href="#">Marine</a>
+                                <li><a href="#">Climate</a>
+                                <li><a href="#">Space Weather</a>
+                                <li><a href="#">Fire Weather</a>
+                                <li><a href="#">Aviation</a>
+                                <li><a href="#">Tsunami</a>
+                                <li><a href="#">Forecast Models</a>
+                                <li><a href="#">Water</a>
+                                <li><a href="#">GIS</a>
+                                <li><a href="#">Storm Spotters</a>
+                                <li><a href="#">Facts and Figures</a>
+                           </ul>
+                        </li>
+                        <li><a href="index-2.html">World weather news</a></li>
+                        <li><a href="index-3.html">Weather charts</a></li>
+                        <li><a href="index-4.html">Footage</a></li>
+                        <li><a href="index-5.html">Contacts</a></li>
+                    </ul>
+                </nav>
+                <div class="search-block">
+                    <form id="search1" class="search" action="search.php" method="GET">
+                        <label for="s">Enter Location</label>
+                        <input id="s" type="text" name="s" value="" >
+                        <a onClick="document.getElementById('search1').submit()" class="button1"></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row slider-wrapper">
+            <div class="grid_12">
+                <div class="camera_wrap camera_emboss" id="camera_wrap_3">
+                    <div data-thumb="images/thumb-slide-1.jpg" data-src="images/slide-1.jpg" data-time="1500" data-trasPeriod="4000" data-target="_blank">
+                        <div class="camera_caption fadeIn">
+                            <div class="slider-text">
+                                <div class="inside">Vestibulum iaculis lacinia est proin. <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-thumb="images/thumb-slide-2.jpg" data-src="images/slide-2.jpg">
+                        <div class="camera_caption fadeIn">
+                            <div class="slider-text">
+                                <div class="inside">Reiciendis culpa a omnis. Voluptatem. <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-thumb="images/thumb-slide-3.jpg" data-src="images/slide-3.jpg" data-time="1500" data-trasPeriod="4000" data-link="http://www.google.com/" data-target="_blank">
+                        <div class="camera_caption fadeIn">
+                            <div class="slider-text">
+                                <div class="inside">Laborum aliquid asperiores dicta aliquam. <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-thumb="images/thumb-slide-4.jpg" data-src="images/slide-4.jpg" data-time="1500" data-trasPeriod="4000" data-link="http://www.google.com/" data-target="_blank">
+                        <div class="camera_caption fadeIn">
+                            <div class="slider-text">
+                                <div class="inside">Laudantium laboriosam adipisci. <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-thumb="images/thumb-slide-5.jpg" data-src="images/slide-5.jpg" data-time="1500" data-trasPeriod="4000" data-link="http://www.google.com/" data-target="_blank">
+                        <div class="camera_caption fadeIn">
+                            <div class="slider-text">
+                                <div class="inside">Perspiciatis expedita nihil repellat non. <a href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!--=======content================================-->
+<div class="content">
+    <div class="container_12">
+        <div class="row">
+            <div class="grid_5">
+                <div class="title-1">Current Conditions</div>
+                <div class="text-2">Updated 10:52 AM ET</div>
+                <div class="block-1">
+                    <img src="images/page-1_img-1.jpg" alt="">
+                    <div>
+                        <div class="text-1">+25</div>
+                        <div class="text-3">Hi 27&deg; | Lo 21&deg; <br>Intermittent Clouds</div>
+                    </div>
+                </div>
+                <table class="table-1">
+                    <tr class="bg-1">
+                        <td>Feels like: </td>
+                        <td>26°</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity:</td>
+                        <td>71%</td>
+                    </tr>
+                    <tr class="bg-1">
+                        <td>Wind:</td>
+                        <td>S 10 mph </td>
+                    </tr>
+                    <tr>
+                        <td>Sunrise:</td>
+                        <td>6:31 AM</td>
+                    </tr>
+                    <tr class="bg-1">
+                        <td>Sunset:</td>
+                        <td>8:52 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Barometer:</td>
+                        <td>30.03" Hg</td>
+                    </tr>
+                </table>
+                <a href="#" class="btn-1"><span>change location</span></a>
+            </div>
+            <div class="grid_7">
+                <div class="shadow-block-wrapper">
+                    <div class="shadow-block">
+                        <h2>Did you know?</h2>
+                        <div class="box-1 clearfix">
+                            <img src="images/page-1_img-2.jpg" alt="" class="img-ind">
+                            <div>
+                                <h3>Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris</h3>
+                                <div>Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris.<a href="#" class="btn">More</a></div>
+                            </div>
+                        </div>
+                        <div class="box-1 clearfix">
+                            <img src="images/page-1_img-3.jpg" alt="" class="img-ind">
+                            <div>
+                                <h3>Aenean nonummy hendrerit mauris phasellus porta</h3>
+                                <div>Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris.
+                                <a href="#" class="btn">more</a></div>
+                            </div>
+                        </div>
+                        <div class="box-1 clearfix">
+                            <img src="images/page-1_img-4.jpg" alt="" class="img-ind">
+                            <div>
+                                <h3>Fusce suscipit varius mi. Cum sociis natoque penatibus et magnis dis parturient</h3>
+                                <div>Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris.
+                                <a href="#" class="btn">more</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="grid_8">
+                    <div class="tabs1">
+                        <ul class="tabs clearfix">
+                            <li><a href="#">Today</a></li>
+                            <li><a href="#">This Week</a></li>
+                        </ul>
+                        <div class="tab_container bg-2 clearfix">
+                            <div class="tab_content">
+                                <div class="clearfix">
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-5.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Fusce suscipit varius mi. Cum sociis natoque penatibus</h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-6.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Suscipit varius mi. Cum sociis natoque </h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-7.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Magnis disient montes, ncetur ridiculus mus. Nulla dui</h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-8.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Fusce suscipit varius mi. Cum sociis natoque penatibus</h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab_content">
+                                <div class="clearfix">
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-7.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Magnis disient montes, ncetur ridiculus mus. Nulla dui</h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-5.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Fusce suscipit varius mi. Cum sociis natoque penatibus</h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-8.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Fusce suscipit varius mi. Cum sociis natoque penatibus</h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                    <div class="box-2 maxheight clearfix">
+                                        <img src="images/page-1_img-6.png" alt="" class="img-ind">
+                                        <div>
+                                            <h3>Suscipit varius mi. Cum sociis natoque </h3>
+                                            <div>Praesent vestibulum molestie lacus. Aenean nonummy.</div>
+                                            <a href="#" class="btn-2">more info</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid_4">
+                    <h2 class="p1">Most Popular</h2>
+                    <div class="bg-3">
+                        <ul class="list-1">
+                            <li><a href="#">World's Most Polluted Rivers</a></li>
+                            <li><a href="#">Before the Bikini: Rare Vintage Beach Photos</a></li>
+                            <li><a href="#">Are Simultaneous Floods, Drought an Omen in the Pacific?</a></li>
+                            <li><a href="#">9 Desolate Ghost Towns</a></li>
+                            <li><a href="#">The Mystery of Death Valley's 'Sailing' Stones</a></li>
+                            <li><a href="#">10 Incredible Natural Bridges and Arches Like Nothing You've Seen</a></li>
+                            <li><a href="#">Wildfire: Tragedy in Yarnell</a></li>
+                            <li><a href="#">Weather's Role in Fire Tragedy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--=======footer=================================-->
+
+<footer>
+    <div class="container_12 border-bot">
+        <div class="row">
+            <div class="grid_2 w1">
+                <h6>Local Weather</h6>
+                <ul class="list-2">
+                    <li><a href="#">My Favorites</a></li>
+                    <li><a href="#">History Data</a></li>
+                    <li><a href="#">Weather Stations</a></li>
+                </ul>
+            </div>
+            <div class="grid_2 w1">
+                <h6>Maps &amp; Radar</h6>
+                <ul class="list-2">
+                    <li><a href="#">Radar</a></li>
+                    <li><a href="#">Satellite</a></li>
+                </ul>
+            </div>
+            <div class="grid_2 w1">
+                <h6>Severe Weather</h6>
+                <ul class="list-2">
+                    <li><a href="#">Tropical &amp; Hurricane</a></li>
+                    <li><a href="#">Storm Reports</a></li>
+                    <li><a href="#">U.S. Severe Alerts</a></li>
+                </ul>
+            </div>
+            <div class="grid_2 w1">
+                <h6>Photos &amp; Videos</h6>
+                <ul class="list-2">
+                    <li><a href="#">Photo Galleries</a></li>
+                    <li><a href="#">World View</a></li>
+                    <li><a href="#">Webcams</a></li>
+                </ul>
+            </div>
+            <div class="grid_2 w1">
+                <h6>Blogs</h6>
+                <ul class="list-2">
+                    <li><a href="#">Meteorology Blogs</a></li>
+                    <li><a href="#">Member Blogs</a></li>
+                </ul>
+            </div>
+            <div class="grid_2 w1">
+                <h6>Climate</h6>
+                <ul class="list-2">
+                    <li><a href="#">Climate Change</a></li>
+                    <li><a href="#">Evidence</a></li>
+                    <li><a href="#">Record Extremes</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row f-last">
+            <div class="fleft">
+                WeatherChannel © 2013 &nbsp;|&nbsp;  <a class="h-underline" href="index-6.html">Privacy Policy</a> &nbsp;|&nbsp; All Rights Reseved
+                <!--{%FOOTER_LINK} -->
+            </div>
+            <div class="fright">
+                <div class="list-services">
+                    <a href="#" class="soc-1"><i class="icon-twitter-sign"></i>twitter</a>
+                    <a href="#" class="soc-2"><i class="icon-facebook-sign"></i>facebook</a>
+                    <a href="#" class="soc-3"><i class="icon-google-plus-sign"></i>Google+</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

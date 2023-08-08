@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+:root {
+
+  --font-family: "Rubik", sans-serif;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+  --font-extra-bold: 800;
+  --font-style: italic;
+ }
+
+
+
+
+
+
+@mixin before {
+  &:before {
+    content: "";
+    display: inline-block;
+    @content;
+  }
+}
+
+@mixin after {
+  &:after {
+    content: "";
+    display: inline-block;
+    @content;
+  }
+}
+
+@function calcFluidFontSize($f-min, $f-max, $v-min, $v-max, $units: px) {
+    $k: ($f-max - $f-min)/ ($v-max - $v-min);
+    $k: ($k * 100) / 100;
+    $b: $f-min - $k * $v-min;
+    $b: ($b * 100) / 100;
+    $b: $b + $units;
+    @return calc(#{$k} * 100vw + #{$b});
+}
+
+@function pxVh($f-px, $vh) {
+    $k: $f-px/$vh * 100;
+    $k: round($k * 100) / 100;
+    $b: vh;
+    @return #{$k}#{$b};
+}
+
+@function pxVw($f-px, $vw) {
+    $k: $f-px/$vw * 100;
+    $k: round($k * 100) / 100;
+    $b: vw;
+    @return #{$k}#{$b};
+}
+
+
+
+@mixin border-text{
+  -webkit-text-stroke: 1px var(--color-black);
+  color: rgba(255,255,255,0);
+}
+
+$assetsPath: "assets";

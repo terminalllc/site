@@ -1,0 +1,356 @@
+.p-home {
+    &-content {
+        overflow: hidden;
+    }
+}
+.vcontent{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    position: relative;
+}
+.first {
+    padding-top: 30px;
+    @include phone {
+        padding-top: 5px;
+    }
+    &-row {
+        display: flex;
+        flex-wrap: nowrap;
+        @include desktop-block {
+            margin: 0;
+        }
+        @include tablet {
+            flex-wrap: wrap;
+        }
+    }
+    &-img {
+        flex: 0 0 70%;
+        max-width: 70%;
+        height: 380px;
+        overflow: hidden;
+        @include desktop-note-big{
+
+        }
+        @include desktop-wrap {
+            flex: 0 0 65%;
+            max-width: 65%;
+        }
+        @include desktop-block {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0;
+            height: pxVw(420,1024);
+        }
+        @include tablet{
+            height: pxVw(312,768);
+        }
+        @include phone{
+            height: pxVw(160,375);
+        }
+        &-wrap {
+            width: 100%;
+            height: 100%;
+        }
+        &-block {
+            width: 100%;
+            height: 100%;
+            .slick {
+                &-list {
+                    height: 100%;
+                }
+                &-track {
+                    height: 100%;
+                }
+                &-slide {
+                    height: 100%;
+                    &>div {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &-slider {
+        &-slide {
+            height: 100%;
+            width: 100%;
+        }
+        &-col {
+            height: 100%;
+            width: 100%;
+        }
+    }
+    &-option {
+        padding-left: 13px;
+        flex: 0 0 30%;
+        max-width: 30%;
+        //max-width: 430px;
+        @include desktop-wrap {
+            flex: 0 0 35%;
+            max-width: 35%;
+        }
+        @include desktop-block {
+            display: none;
+        }
+        @include tablet {
+            margin: 0 auto;
+            padding-left: 0;
+            padding-top: 30px;
+        }
+        @include phone {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        &-title {
+            &--title {
+                text-transform: uppercase;
+                font-size: 20px;
+                line-height: 1.2;
+                //@include phone {
+                //    font-size: 20px;
+                //}
+            }
+        }
+        &-list {}
+        &-block {
+            //padding-top: 40px;
+            padding-top: 32px;
+            &:first-of-type {
+                padding-top: 32px;
+            }
+            &-title {
+                text-transform: uppercase;
+                font-size: 14px;
+                font-weight: var(--font-medium);
+            }
+            &-last {
+                display: flex;
+                @include phone {
+                    display: block;
+                }
+                .first-option {
+                    &-checkboxes {
+                        display: block;
+                    }
+                    &-block {
+                        &-wrap {
+                            flex: 1;
+                        }
+                    }
+                    &-buttons {
+                        max-width: 135px;
+                        flex: 0 0 135px;
+                        display: flex;
+                        align-items: flex-end;
+                    }
+                }
+            }
+        }
+        &-checkboxes {
+            padding-top: 5px;
+            display: flex;
+            @include phone {
+                display: block;
+            }
+            & .item-checkbox {
+                position: relative;
+                padding-bottom: 10px;
+                flex: auto;
+                &:first-of-type {
+                    padding-top: 0;
+                }
+                input[type="checkbox"] {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 0;
+                    width: 0;
+                    padding: 0;
+                    margin: 0;
+                    opacity: 0;
+                    &+label {
+                        cursor: pointer;
+                        position: relative;
+                        top: 0;
+                        opacity: 1;
+                        text-align: left;
+                        font-size: 14px;
+                        padding-left: 34px;
+                        height: 24px;
+                        display: inline-flex;
+                        align-items: center;
+                        text-transform: uppercase;
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            top: 0px;
+                            width: 24px;
+                            height: 24px;
+                            //background-color: transparent;
+                            //border: 1px solid var(--color-black);
+                            //border-radius: 4px;
+                            cursor: pointer;
+                            background-image: url('/../icons/icon-checkbox.svg');
+                            background-repeat: no-repeat;
+                            background-attachment: scroll;
+                            //background-size: 75%;
+                            background-position: center center;
+                        }
+                        &:before {
+                            content: "";
+                            z-index: 1;
+                            opacity: 0;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 24px;
+                            height: 24px;
+                            background-image: url('/../icons/icon-checkbox-checked.svg');
+                            background-repeat: no-repeat;
+                            background-attachment: scroll;
+                            //background-size: 75%;
+                            background-position: center center;
+                        }
+                    }
+                    &[checked="checked"]+label,
+                    &:checked+label {
+                        color: var(--color-orange-1);
+                        &:before {
+                            opacity: 1;
+                        }
+                        &:after {
+                            opacity: 0;
+                        }
+                    }
+                    &:hover {
+                        &+label {
+                            &:after {
+                                //background-color: var(--color-white);
+                                //border: 1px solid var(--color-white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.car_images {
+    display: flex;
+    flex-wrap: wrap;
+}
+.productrow {
+    padding-block: 10px;
+}
+.single_img {
+    padding: 5px;
+    cursor: pointer;
+}
+.product_img_block {
+    max-width: 100px
+}
+.span_strong {
+    font-weight: 600;
+    font-size: larger;
+}
+.span_name {
+    font-weight: 600;
+    font-size: larger;
+}
+.span_value {
+    font-size: larger;
+    padding-left: 5px;
+    text-transform: uppercase;
+}
+.header_bottom {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 520px;
+}
+.new-products {
+    background-color: #ffffffc9;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    &-block {
+        padding-block: 75px;
+    }
+    .row {
+        //justify-content: space-between;
+    }
+    .product-col {
+        flex: 0 0 50%;
+        max-width: 50%;
+        @include desktop-block {
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+        }
+        @include tablet {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        @include phone {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+.description {
+    padding-top: 65px;
+    //padding-bottom: 150px;
+    @include phone {
+        padding: 30px 0 10px;
+    }
+    &-block {
+        padding-top: 75px;
+        @include phone {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+    .row {
+        justify-content: space-between;
+    }
+    .col {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+    .title-block {
+        .title {
+            &--title {
+                font-weight: var(--font-medium);
+            }
+        }
+    }
+    &-block {
+        padding-top: 32px;
+        .content {
+            font-weight: var(--font-light);
+            font-size: 20px;
+            @include phone {
+                font-size: 16px;
+            }
+            p {
+                font-weight: var(--font-light);
+                font-size: 20px;
+                @include phone {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+

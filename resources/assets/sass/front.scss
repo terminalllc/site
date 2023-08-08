@@ -1,0 +1,23 @@
+//base styles for project
+@import 'settings/reset';
+@import 'settings/colors';
+@import 'settings/breakpoint';
+@import 'settings/grid';
+//@import 'settings/fonts';
+@import 'settings/vars';
+@import 'settings/base';
+@import 'settings/form';
+@import 'settings/buttons';
+@import 'settings/modal-block';
+
+@import 'settings/select2';
+
+// Pages
+@import 'pages/p-home';
+
+//Components
+@import 'components/c-header';
+
+@import 'components/c-footer';
+@import "@fancyapps/ui/dist/fancybox/fancybox.css";
+

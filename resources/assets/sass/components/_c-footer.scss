@@ -1,0 +1,186 @@
+.footer {
+    padding-top: 100px;
+    padding-bottom: 10px;
+    &-block{
+        padding: 34px 50px 25px;
+        border: 2px dashed var(--color-orange-1);
+        border-radius: 20px;
+        @include desktop-block{
+            padding: 25px;
+        }
+        @include phone{
+            border: 0 none;
+            border-radius: 0;
+        }
+    }
+    &-top {
+        .row{
+            margin-left: -25px;
+            margin-right: -25px;
+        }
+        &-menu{
+            padding-right: 25px;
+            padding-left: 25px;
+            flex: 0 0 23%;
+            max-width: 23%;
+            @include desktop-block{
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding-bottom: 20px;
+            }
+            @include phone{
+                display: none;
+            }
+        }
+        &-address{
+            padding-right: 25px;
+            padding-left: 25px;
+            flex: 0 0 23%;
+            max-width: 23%;
+            @include desktop-block{
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding-bottom: 20px;
+            }
+            @include phone{
+                flex: 0 0 100%;
+                max-width: 100%;
+                border: 2px dashed var(--color-orange-1);
+                border-radius: 20px;
+                padding: 20px;
+                order: 1;
+            }
+        }
+        &-form{
+            padding-right: 25px;
+            padding-left: 25px;
+            flex: 0 0 31%;
+            max-width: 31%;
+            @include desktop-block{
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+            @include phone{
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 0 0 20px;
+                order: -1;
+            }
+            .footer{
+                &-item{
+                    padding: 20px;
+                    border: 2px dashed var(--color-orange-1);
+                    border-radius: 20px;
+                    &-title{
+                        text-align: center;
+                    }
+                    &-desc{
+                        text-align: center;
+                    }
+                }
+            }
+            .form{
+                &-label{
+                    font-weight: var(--font-medium);
+                    font-size: 12px;
+                    padding-bottom: 10px;
+                }
+                &-item{
+                    padding: 0 0 25px;
+                }
+                &-actions{
+                    padding-top: 10px;
+                    display: flex;
+                    justify-content: center;
+                }
+                .btn{
+                    background-color: var(--color-orange-1);
+                    padding: 8px 16px;
+                    color: var(--color-white);
+                    font-size: 16px;
+                    font-weight: var(--font-medium);
+                    height: 40px;
+                    border-radius: 4px;
+                }
+            }
+
+        }
+    }
+    &-item{
+        &-title{
+            &--title{
+                font-size: 14px;
+                font-weight: var(--font-medium);
+                text-transform: uppercase;
+            }
+        }
+        &-desc{
+            &--desc{
+                font-size: 14px;
+            }
+        }
+        &-ul{
+
+        }
+        &-li{
+            padding-top: 5px;
+        }
+        &--link{
+            text-transform: uppercase;
+            font-size: 14px;
+
+        }
+        &-lists{
+            font-size: 14px;
+        }
+        &-phones{
+            &-item{
+
+            }
+            &--link{
+                font-size: 14px;
+            }
+        }
+        &-form{
+            padding-top: 30px;
+            position: relative;
+            .form{
+                &-label{
+                    text-transform: uppercase;
+                    font-size: 12px;
+                }
+                &-item{
+                  &.error {
+                      .error-message{
+                          padding-left: 0;
+                      }
+                  }
+                }
+            }
+            .form-message-success{
+                color: #ffffff;
+                font-weight: 600;
+                background-color: #0e9f6e;
+                border-radius: 4px;
+                text-transform: uppercase;
+                //padding-left: 6px;
+                //margin-bottom: 6px;
+            }
+        }
+        
+    }
+    &-bottom{
+        padding-top: 7px;
+        @include desktop-block{
+            padding-top: 20px;
+        }
+        &-block{
+            display: flex;
+            justify-content: center;
+        }
+        .item{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}

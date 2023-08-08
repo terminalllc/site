@@ -1,0 +1,119 @@
+/*slider */
+.slider-wrapper {margin-top: 50px; position: relative; padding-bottom: 72px;}
+.slider-wrapper .camera_thumbs {
+	padding-top: 7px;
+	background: #ededed;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+}
+.slider-wrapper .camera_thumbs { padding-right:10px; }
+.slider-wrapper  .camera_thumbs_cont ul {height: 63px; white-space: nowrap;}
+.slider-wrapper  .camera_thumbs_cont ul li {padding: 0 10px 0px; }
+.slider-wrapper .slider-text {
+	position: absolute;
+	bottom: 12px;
+	font-family: 'Domine', serif; 
+	font-weight: bold;
+	font-size: 25px; line-height: 30px; color: #4c4c4c;
+}
+.slider-wrapper .slider-text a {font: 13px/33px Arial, sans-serif; color: #ffb607; text-decoration: underline; }
+.slider-wrapper .slider-text a:hover {text-decoration: none;}
+.cameraContent { margin-bottom: 0px;}
+.border-1-wrap { 
+	display: inline-block; 
+	position: relative;
+	border: none;
+}
+.slider-wrapper  .camera_fakehover { padding-bottom: 63px;}
+.border-1-wrap img {
+	-webkit-box-shadow: 0 2px 3px 1px #dadad9;
+	-moz-box-shadow: 0 2px 3px 1px #dadad9;
+	box-shadow: 0 2px 3px 1px #dadad9;
+	cursor: pointer;
+}
+
+.border-1-wrap > span { position: absolute; display: none; background: #ffffff;}
+.border-1-wrap:hover > span,
+.cameracurrent .border-1-wrap span {display: block; }
+.s-bord-1, .s-bord-3 { height: 6px; left: 0; right: 0;}
+.s-bord-1 {top: 0px;}
+.s-bord-3 {bottom: 3px;}
+.s-bord-2, .s-bord-4 { width: 6px; top: 0; bottom: 3px;}
+.s-bord-2 {left: 0px;}
+.s-bord-4 {right: 0px;}
+.cameracurrent .border-1-wrap .s-bord-1 { 
+	background: transparent url(../images/s-bord-1.png) center 0 no-repeat;
+	height: 13px;
+	top: -8px;
+	font-size: 0px;
+}
+.slider-wrapper .camera_thumbs_cont ul {padding-top: 8px;padding-bottom: 12px; text-align: left;}
+.slider-wrapper .camera_wrap img {
+	height: 62px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	text-align: left;
+}
+
+.camera_wrap {height: 329px;}
+
+.slider-wrapper .camera_prev,
+.slider-wrapper .camera_next {top: 50%; margin-top: -35px; bottom: auto; display: none; width: 12px; height: 22px;}
+.slider-wrapper .camera_prev span,
+.slider-wrapper .camera_next span { background: none; width: 12px; height: 22px;}
+.slider-wrapper .camera_prev {right: auto; left: 2px;}
+.slider-wrapper .camera_next {right: 7px; left: auto;}
+.camera_next > span,
+.camera_prev > span { background: none;}
+.camera_prev > span:after,
+.camera_next > span:after { 
+	font-size: 36px; 
+	color: #000000; 
+	font-family: FontAwesome;
+	font-weight: bold;
+	font-style: normal;
+	text-decoration: inherit;
+	-webkit-font-smoothing: antialiased;
+	opacity: 0.8;
+}
+.camera_prev > span:after {
+	content: "\f104";
+}
+.camera_next > span:after {
+	content: "\f105";
+}
+.slider-wrapper .camera_prev span:hover:after,
+.slider-wrapper .camera_next span:hover:after {opacity: 1; color:#ffb607; }
+.slider-wrapper .camera_thumbs .pix_thumb img { width: 165px;}
+.camera_wrap { height: 329px;}
+
+	.slider-wrapper .camera_thumbs_cont ul { width: 925px!important;}
+@media only screen and (max-width: 995px) {
+	.camera_wrap {height: 262px;}
+	.slider-wrapper .camera_thumbs .pix_thumb img { width: 127px;}
+	.camera_thumbs { display: block;}
+	.camera_wrap { height: 334px;}
+	.slider-wrapper .camera_thumbs_cont ul { width: 730px!important;}
+}
+@media only screen and (max-width: 767px) {
+	.camera_wrap {height: 200px; margin-bottom: 30px !important;}
+	.camera_thumbs {opacity: 0;}
+	.slider-wrapper { padding-bottom: 30px !important;}
+	.slider-wrapper .camera_prev, .slider-wrapper .camera_next { display: block !important;}
+	.slider-wrapper .slider-text, .slider-wrapper .slider-text a { font-size: 15px; line-height: 17px;}
+	.slider-wrapper .camera_fakehover { padding-bottom: 72px;}
+	.camera_wrap { height: 230px;}
+}
+@media only screen and (max-width: 480px) {
+	.camera_wrap {height: 200px;}
+}
+@media only screen and (max-width: 320px) {
+	.camera_wrap {height: 200px;}
+}
+

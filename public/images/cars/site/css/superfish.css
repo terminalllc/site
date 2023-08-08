@@ -1,0 +1,220 @@
+/*menu with jquery.horizontalNav.js*/
+
+nav { 
+	position:relative; 
+	z-index: 11;
+	margin-top: 30px; 
+	padding-bottom: 7px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	background: #e5e5e5;
+	-webkit-box-shadow: 1px 3px 5px 0px #b6b6b6;
+	-moz-box-shadow: 1px 3px 5px 0px #b6b6b6;
+	box-shadow: 1px 3px 5px 0px #b6b6b6;
+}
+
+.sf-menu {
+	background: #fcfcfc; 
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #ffffff; 
+	padding-top: 20px;
+	padding-bottom: 16px;
+}
+.sf-menu ul {position:absolute;top:-999px; display:none;/* left offset of submenus need to match (see below) */}
+.sf-menu li { padding-left:0px; position:relative; float: left;}
+.sf-menu li:first-child { background: no-repeat;}
+	.sf-menu a {
+		display: block;
+		font-family: 'Domine', serif; 
+		font-weight: bold;
+		font-size: 13px;
+		line-height: 13px;
+		text-decoration: none;
+	}
+		.sf-menu a:hover {text-decoration: none;}
+
+/*================================>> 1 Level <<========================================*/
+
+li.sfHover {position: relative;}
+
+.sf-menu > li > a {
+	position: relative;
+	display:inline-block;
+	padding: 8px 15px 8px 15px;
+	text-align: center;
+	color: #4c4c4c;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+	margin: 0 auto;
+	letter-spacing: -1px;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    -webkit-transition: color 0.3s ease-out;
+    transition: color 0.3s ease;
+}
+.sf-menu > li {
+	display: block;
+	margin: 0 0px;
+	position: relative;
+	text-align: center;
+     background: url(../images/bg-3.gif) left center no-repeat; 
+     padding: 0 17px;
+}
+	.sf-menu > li.current > a,
+	.sf-menu > li > a:hover,
+	.sf-menu > li.sfHover > a {
+		background: #ffb607 url(../images/bg-2.gif) 0 0 repeat-x;
+		color: #ffffff;
+	}
+	.sf-menu > li > a:hover, 
+	.sf-menu > li.current > a, 
+	.sf-menu > li.sfHover > a,
+	.sf-menu > li > span:hover, 
+	.sf-menu > li.current > span, 
+	.sf-menu > li.sfHover > span {
+		text-decoration: none;
+	}
+
+/*================================>> 2 Level <<========================================*/
+.sf-menu > li > ul, 
+.sf-menu > li.sfHover > ul {
+	top:53px;
+	width:162px;
+	z-index:99;
+	background: #4c4c4c;
+	text-align: left;
+	padding: 25px 9px 26px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+	-ms-border-radius: 0 0 3px 3px;
+	-o-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
+}
+.sf-menu > li > ul > li {width:100%; height: auto; border: none; margin: 0; padding: 0;}
+
+.sf-menu > li > ul > li > a {
+	display: block;
+	font-size:12px;
+	color: #fff;
+	text-transform: capitalize;
+	padding: 6px 10px 5px;
+	line-height: 14px;
+	border: none;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+}
+.sf-menu li li a:hover, 
+.sf-menu li.sfHover li.sfHover>a,
+.sf-menu li li:hover span,
+.sf-menu li.sfHover li.sfHover span { 
+	text-decoration: none;
+	color: #ffffff;
+	background-color: #737373;
+}
+.sf-menu li li:hover, 
+.sf-menu li.sfHover li.sfHover { 
+	color: #ffffff;
+}
+
+.sf-menu > li.sfHover > span {	color: #ffb607; font-weight: bold;}
+
+	.sf-menu > li > ul .sf-sub-indicator {line-height: 14px;}
+
+/*================================>> 3 Level <<========================================*/
+
+.sf-menu li li ul {
+	left: 0px;
+	top: 0px;
+	width: inherit;
+	z-index:99;
+	background-color: #bfbfbf;
+	position: relative;
+	padding-top: 0;
+	margin-top: 0;
+}
+.sf-menu li li li {width: 100%;background-color: #bfbfbf;}
+.sf-menu li li li a {
+	text-decoration: none;
+	color: #ffffff;
+	font-size:13px;
+	text-transform: uppercase;
+	padding-left: 55px;
+	line-height: 26px;
+	height: 26px;
+}
+.sf-menu li li li:hover {background: #ffffff;}
+	.sf-menu li li li:hover a {	color: #c1c1c1;}
+.sf-menu > li > ul .sf-sub-indicator {color: #ffffff; line-height: 9px;}
+.sf-menu > li > li.sfHover > span {
+	color: #ffffff;
+}
+
+/*==================================RESPONSIVE LAYOUTS===============================================*/
+
+@media only screen and (max-width: 995px) {
+	nav {margin-bottom: 20px;}
+	.sf-menu > li { padding: 0 5px;}
+	.sf-menu > li > a { padding: 8px 11px 8px 11px;}
+}
+@media only screen and (max-width: 795px) {
+
+		.block-3 ul li img {
+			width: 100%;
+		}
+}
+@media only screen and (max-width: 767px) {
+	.sf-menu { display:none !important;}
+	nav { padding-left:10px; padding-right: 10px; }
+	nav select {
+		height: 35px;
+		font-family: Arial, sans-serif;
+		font-size: 14px;
+		line-height: 20px;
+		color: #ffffff;
+		background-color: #ffb607;
+		width:100%;
+	    outline: none;
+	    padding: 5px;
+		font-weight: normal;
+		margin-top: 10px;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		-ms-border-radius: 4px;
+		-o-border-radius: 4px;
+		border-radius: 4px;
+	}
+	nav select option:first-child {
+		color:#ffffff;
+	}
+}
+
+@media only screen and (max-width: 479px) {
+
+}
