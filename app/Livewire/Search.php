@@ -12,7 +12,7 @@ class Search extends Component
 
     public function updatedSearch()
     {
-        $this->query = strlen($this->search) >2 ? $this->search : null;
+        $this->query = strlen($this->search) >5 ? $this->search : null;
 
     }
 
