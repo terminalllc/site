@@ -10,19 +10,24 @@ use ZanySoft\Zip\Facades\Zip;
 class Cars extends Component
 {
 
+    public $search;
     public $car;
 
     protected $listeners = ['searchResult'];
 
     public function render()
     {
+        $this->car = Car::search($this->search ?? null)->first();
+
+        $this->search = null;
+        
         return view('livewire.cars');
     }
 
     #[On('searchResult')]
-    public function searchResult(?Car $car)
+    public function searchResult($search)
     {
-        $this->car= $car ?? null;
+        $this->search = $search;
     }
 
     public function download(Car $car, $field)

@@ -1,4 +1,5 @@
 <div>
+    <span>{{$search}}</span><span>{{$car}}</span>
     @if (count((array)$car))
     <section class="new-products">
         <div class="site-width">

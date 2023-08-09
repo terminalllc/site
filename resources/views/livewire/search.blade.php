@@ -6,7 +6,8 @@
                     <form class="form">
                         <div class="header-search-form-item">
                             <div class="form-item">
-                                <input wire:model.live="search" type="text" placeholder="{{__('search.placeholder')}}">
+                                <input wire:model.live="search" wire:keydown.enter.prevent="enterSearch" type="text" placeholder="{{__('search.placeholder')}}">
+                                <span>{{$search}}</span>
                             </div>
                         </div>
                     </form>

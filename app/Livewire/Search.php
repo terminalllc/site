@@ -12,20 +12,18 @@ class Search extends Component
 
     public function updatedSearch()
     {
-        $this->query = strlen($this->search) >5 ? $this->search : null;
+       // $this->query = strlen($this->search) >5 ? $this->search : null;
+        $this->dispatch('searchResult', search: $this->search);
+    }
 
+    public function enterSearch()
+    {
+        //$this->query = strlen($this->search) > 5 ? $this->search : null;
+        $this->dispatch('searchResult', search: $this->search);
     }
 
     public function render()
     {
-        if ($this->query) {
-            $car = Car::search($this->search)->first();
-            if ($car) {
-                $this->dispatch('searchResult', car: $car);
-            }
-
-        }
-
         return view('livewire.search');
     }
 }
