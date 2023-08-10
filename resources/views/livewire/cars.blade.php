@@ -28,13 +28,24 @@
                             <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
                                 @foreach ($car?->containerImages as $image)
+                                @if ($loop->first)
                                 <div class="product_img_block">
-                                    <a data-fancybox data-src="{{$image}}">
+                                    <a data-fancybox="gallery" data-src="{{$image}}">
                                         <div class="single_img">
                                             <img src="{{$image}}">
+                                            <span class="span_image">{{__('images.view_all')}}</span>
                                         </div>
                                     </a>
                                 </div>
+                                @else
+                                    <div style="display: none">
+                                        <a data-fancybox="gallery" data-src="{{$image}}">
+                                            <div class="single_img">
+                                                <img src="{{$image}}">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @endif
                                 @endforeach
                             </div>
                             <div class="product-bottom">
@@ -49,13 +60,24 @@
                             <span class="span_strong">{{__('images.on_terminal')}}</span>
                             <div class="car_images">
                                 @foreach ($car?->terminalImages as $image)
+                                @if ($loop->first)
                                 <div class="product_img_block">
-                                    <a data-fancybox data-src="{{$image}}">
+                                    <a data-fancybox="gallery" data-src="{{$image}}">
                                         <div class="single_img">
                                             <img src="{{$image}}">
+                                            <span class="span_image">{{__('images.view_all')}}</span>
                                         </div>
                                     </a>
                                 </div>
+                                @else
+                                    <div style="display: none">
+                                        <a data-fancybox="gallery" data-src="{{$image}}">
+                                            <div class="single_img">
+                                                <img src="{{$image}}">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @endif
                                 @endforeach
                             </div>
                             <div class="product-bottom">
@@ -70,13 +92,24 @@
                             <span class="span_strong">{{__('images.out_terminal')}}</span>
                             <div class="car_images">
                                 @foreach ($car?->outImages as $image)
+                                @if ($loop->first)
                                 <div class="product_img_block">
-                                    <a data-fancybox data-src="{{$image}}">
+                                    <a data-fancybox="gallery" data-src="{{$image}}">
+                                        <div class="single_img">
+                                            <img src="{{$image}}">
+                                            <span class="span_image">{{__('images.view_all')}}</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                @else
+                                <div style="display: none">
+                                    <a data-fancybox="gallery" data-src="{{$image}}">
                                         <div class="single_img">
                                             <img src="{{$image}}">
                                         </div>
                                     </a>
                                 </div>
+                                @endif
                                 @endforeach
                             </div>
                             <div class="product-bottom">
