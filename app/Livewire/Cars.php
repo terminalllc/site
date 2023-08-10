@@ -12,15 +12,18 @@ class Cars extends Component
 
     public $search;
     public $car;
+    public $dump;
 
     protected $listeners = ['searchResult'];
 
     public function render()
     {
-        $this->car = Car::search($this->search ?? null)->first();
+        if ($this->search) {
+            $this->car = Car::search($this->search)->first();
+        }
 
         $this->search = null;
-        
+
         return view('livewire.cars');
     }
 
