@@ -94,7 +94,6 @@
                             </div>
                         </div>
                         @endif
-
                         @if(count($car?->outImages))
                         <div class="productrow">
                             <span class="span_strong">{{__('images.on_container')}}</span>
