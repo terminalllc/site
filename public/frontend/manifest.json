@@ -1,11 +1,11 @@
 {
   "resources/assets/js/front.js": {
-    "file": "assets/front-3491111a.js",
+    "file": "assets/front-8a0e1568.js",
     "isEntry": true,
     "src": "resources/assets/js/front.js"
   },
   "resources/assets/sass/front.scss": {
-    "file": "assets/front-8cfd178a.css",
+    "file": "assets/front-f177053b.css",
     "isEntry": true,
     "src": "resources/assets/sass/front.scss"
   }

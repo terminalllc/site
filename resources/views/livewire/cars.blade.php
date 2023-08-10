@@ -27,95 +27,105 @@
                         <div class="productrow">
                             <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
-                                @foreach ($car?->containerImages as $image)
-                                @if ($loop->first)
                                 <div class="product_img_block">
+                                    @foreach ($car?->containerImages as $image)
+                                    @if ($loop->first)
                                     <a data-fancybox="gallery" data-src="{{$image}}">
                                         <div class="single_img">
                                             <img src="{{$image}}">
                                             <span class="span_image">{{__('images.view_all')}}</span>
                                         </div>
                                     </a>
-                                </div>
-                                @else
+                                    @elseif ($loop->index ==1)
                                     <div style="display: none">
+                                        @elseif ($loop->index >1)
                                         <a data-fancybox="gallery" data-src="{{$image}}">
                                             <div class="single_img">
                                                 <img src="{{$image}}">
                                             </div>
                                         </a>
+                                        @else
                                     </div>
                                     @endif
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="product-bottom">
                                 <div class="product-bottom-buy">
-                                    <button wire:click="download({{ $car}}, 'containerImages')" class="btn btn-buy">{{__('button.download')}}</button>
+                                    <button wire:click="download({{ $car}}, 'containerImages')" class="btn btn-buy">{{__('button.download')}}
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         @endif
+
                         @if(count($car?->terminalImages))
                         <div class="productrow">
-                            <span class="span_strong">{{__('images.on_terminal')}}</span>
+                            <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
-                                @foreach ($car?->terminalImages as $image)
-                                @if ($loop->first)
                                 <div class="product_img_block">
-                                    <a data-fancybox="gallery" data-src="{{$image}}">
+                                    @foreach ($car?->terminalImages as $image)
+                                    @if ($loop->first)
+                                    <a data-fancybox="gallery1" data-src="{{$image}}">
                                         <div class="single_img">
                                             <img src="{{$image}}">
                                             <span class="span_image">{{__('images.view_all')}}</span>
                                         </div>
                                     </a>
-                                </div>
-                                @else
+                                    @elseif ($loop->index ==1)
                                     <div style="display: none">
-                                        <a data-fancybox="gallery" data-src="{{$image}}">
+                                        @elseif ($loop->index >1)
+                                        <a data-fancybox="gallery1" data-src="{{$image}}">
                                             <div class="single_img">
                                                 <img src="{{$image}}">
                                             </div>
                                         </a>
+                                        @else
                                     </div>
                                     @endif
-                                @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="product-bottom">
                                 <div class="product-bottom-buy">
-                                    <button wire:click="download({{ $car}}, 'terminalImages')"class="btn btn-buy">{{__('button.download')}}</button>
+                                    <button wire:click="download({{ $car}}, 'containerImages')" class="btn btn-buy">{{__('button.download')}}
+                                    </button>
                                 </div>
                             </div>
                         </div>
                         @endif
+
                         @if(count($car?->outImages))
                         <div class="productrow">
-                            <span class="span_strong">{{__('images.out_terminal')}}</span>
+                            <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
-                                @foreach ($car?->outImages as $image)
-                                @if ($loop->first)
                                 <div class="product_img_block">
-                                    <a data-fancybox="gallery" data-src="{{$image}}">
+                                    @foreach ($car?->outImages as $image)
+                                    @if ($loop->first)
+                                    <a data-fancybox="gallery2" data-src="{{$image}}">
                                         <div class="single_img">
                                             <img src="{{$image}}">
                                             <span class="span_image">{{__('images.view_all')}}</span>
                                         </div>
                                     </a>
+                                    @elseif ($loop->index ==1)
+                                    <div style="display: none">
+                                        @elseif ($loop->index >1)
+                                        <a data-fancybox="gallery2" data-src="{{$image}}">
+                                            <div class="single_img">
+                                                <img src="{{$image}}">
+                                            </div>
+                                        </a>
+                                        @else
+                                    </div>
+                                    @endif
+                                    @endforeach
                                 </div>
-                                @else
-                                <div style="display: none">
-                                    <a data-fancybox="gallery" data-src="{{$image}}">
-                                        <div class="single_img">
-                                            <img src="{{$image}}">
-                                        </div>
-                                    </a>
-                                </div>
-                                @endif
-                                @endforeach
                             </div>
                             <div class="product-bottom">
                                 <div class="product-bottom-buy">
-                                    <button wire:click="download({{ $car}}, 'outImages')" class="btn btn-buy">{{__('button.download')}}</button>
-
+                                    <button wire:click="download({{ $car}}, 'containerImages')" class="btn btn-buy">{{__('button.download')}}
+                                    </button>
                                 </div>
                             </div>
                         </div>
