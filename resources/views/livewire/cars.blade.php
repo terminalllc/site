@@ -1,6 +1,6 @@
 <div>
     @if (count((array)$car))
-    <section class="new-products">
+    <section class="new-products" wire:key="car-{{ $car->id }}">
         <div class="site-width">
             <div class="new-products-block">
                 <div class="row">
