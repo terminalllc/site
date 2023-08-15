@@ -7,23 +7,23 @@
                     <div class="col product-col">
                         <div style="display: flex; flex-direction: row;">
                             <span class="span_name">{{__('label.name')}}: </span>
-                            <span class="span_value"> {{ $car?->name }}</span>
+                            <span class="span_value"> {{ $car->name }}</span>
                         </div>
                         <div style="display: flex; flex-direction: row;">
                             <span class="span_name">{{__('label.vin')}}: </span>
-                            <span class="span_value"> {{ $car?->vin }}</span>
+                            <span class="span_value"> {{ $car->vin }}</span>
                         </div>
                         <div style="display: flex; flex-direction: row;">
                             <span class="span_name">{{__('label.date_on_terminal')}}: </span>
-                            <span class="span_value"> {{ $car?->on_terminal_at }}</span>
+                            <span class="span_value"> {{ $car->on_terminal_at }}</span>
                         </div>
                         <div style="display: flex; flex-direction: row;">
                             <span class="span_name">{{__('label.date_out_terminal')}}: </span>
-                            <span class="span_value"> {{ $car?->out_terminal_at }}</span>
+                            <span class="span_value"> {{ $car->out_terminal_at }}</span>
                         </div>
                     </div>
                     <div class="col product-col">
-                        @if(count($car?->containerImages))
+                        @if(count($car->containerImages))
                         <div class="productrow">
                             <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
@@ -59,9 +59,9 @@
                         </div>
                         @endif
 
-                        @if(count($car?->terminalImages))
+                        @if(count($car->terminalImages))
                         <div class="productrow">
-                            <span class="span_strong">{{__('images.on_container')}}</span>
+                            <span class="span_strong">{{__('images.on_terminal')}}</span>
                             <div class="car_images">
                                 <div class="product_img_block">
                                     @foreach ($car->terminalImages as $image)
@@ -94,9 +94,9 @@
                             </div>
                         </div>
                         @endif
-                        @if(count($car?->outImages))
+                        @if(count($car->outImages))
                         <div class="productrow">
-                            <span class="span_strong">{{__('images.on_container')}}</span>
+                            <span class="span_strong">{{__('images.out_terminal')}}</span>
                             <div class="car_images">
                                 <div class="product_img_block">
                                     @foreach ($car->outImages as $image)
