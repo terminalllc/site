@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="col product-col">
-                        {{-- @if(count($car->containerImages)) --}}
+                        @if(count($car->containerImages))
                         <div class="productrow">
                             <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
@@ -57,9 +57,9 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @endif --}}
+                        @endif
 
-                        {{-- @if(count($car->terminalImages)) --}}
+                        @if(count($car->terminalImages))
                         <div class="productrow">
                             <span class="span_strong">{{__('images.on_terminal')}}</span>
                             <div class="car_images">
@@ -93,8 +93,8 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @endif --}}
-                        {{-- @if(count($car->outImages)) --}}
+                        @endif
+                        @if(count($car->outImages))
                         <div class="productrow">
                             <span class="span_strong">{{__('images.out_terminal')}}</span>
                             <div class="car_images">
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- @endif --}}
+                        @endif
                     </div>
                 </div>
             </div>

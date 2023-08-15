@@ -19,6 +19,7 @@ class Cars extends Component
     public function render()
     {
         if ($this->search) {
+            $this->car = '';
             $this->car = Car::search($this->search)->first();
         }
 
