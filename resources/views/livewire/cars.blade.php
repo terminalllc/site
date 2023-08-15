@@ -28,7 +28,7 @@
                             <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
                                 <div class="product_img_block">
-                                    @foreach ($car?->containerImages as $image)
+                                    @foreach ($car->containerImages as $image)
                                     @if ($loop->first)
                                     <a data-fancybox="gallery" data-src="{{$image}}">
                                         <div class="single_img">
@@ -64,7 +64,7 @@
                             <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
                                 <div class="product_img_block">
-                                    @foreach ($car?->terminalImages as $image)
+                                    @foreach ($car->terminalImages as $image)
                                     @if ($loop->first)
                                     <a data-fancybox="gallery1" data-src="{{$image}}">
                                         <div class="single_img">
@@ -88,7 +88,7 @@
                             </div>
                             <div class="product-bottom">
                                 <div class="product-bottom-buy">
-                                    <button wire:click="download({{ $car}}, 'containerImages')" class="btn btn-buy">{{__('button.download')}}
+                                    <button wire:click="download({{ $car}}, 'terminalImages')" class="btn btn-buy">{{__('button.download')}}
                                     </button>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                             <span class="span_strong">{{__('images.on_container')}}</span>
                             <div class="car_images">
                                 <div class="product_img_block">
-                                    @foreach ($car?->outImages as $image)
+                                    @foreach ($car->outImages as $image)
                                     @if ($loop->first)
                                     <a data-fancybox="gallery2" data-src="{{$image}}">
                                         <div class="single_img">
@@ -123,7 +123,7 @@
                             </div>
                             <div class="product-bottom">
                                 <div class="product-bottom-buy">
-                                    <button wire:click="download({{ $car}}, 'containerImages')" class="btn btn-buy">{{__('button.download')}}
+                                    <button wire:click="download({{ $car}}, 'outImages')" class="btn btn-buy">{{__('button.download')}}
                                     </button>
                                 </div>
                             </div>
