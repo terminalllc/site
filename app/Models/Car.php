@@ -55,7 +55,8 @@ class Car extends Model
     {
         $query->when($search, function ($query, $search) {
             $query->where(function ($query) use ($search) {
-                $query->whereRaw('LOWER(RIGHT(`vin`,6)) = LOWER(?)', ["{$search}"]);
+                $query->whereRaw('LOWER(RIGHT(`vin`,6)) = LOWER(?)', ["{$search}"])
+                ->orWhereRaw('lower(vin) = lower(?)', ["{$search}"]);
             });
         });
     }
