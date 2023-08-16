@@ -20,15 +20,20 @@ class CarController extends Controller
         return Inertia::render('Cars/Index', [
             'filters' => request('search', []),
             'cars' => Car::filter(request()->only('search'))
+                ->latest('updated_at')
                 ->paginate(50)
                 ->through(fn ($car) => [
                     'id' => $car->id,
                     'name' => $car->name,
                     'vin' => $car->vin,
+                    'presentImages'=> !empty($car->containerImages) || !empty($car->terminalImages) || !empty($car->outImages),
                     'status' => $car->status ? 'Увімкнено' : 'Вимкнено',
                 ]),
         ]);
     }
+    /*         'containerImages' => 'array',
+        'terminalImages' => 'array',
+        'outImages' => 'array', */
     /**
      * Show the form for creating a new resource.
      */

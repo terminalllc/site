@@ -25,7 +25,7 @@
                     <th class="px-4">Status</th>
                     <th class="pb-12 px-4" />
                 </tr>
-                <tr v-for="(car, index) in cars.data" :key="car.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                <tr v-for="(car, index) in cars.data" :key="car.id" class="hover:bg-gray-100 focus-within:bg-gray-100" :class="car.presentImages ? `bg-green-200` : ``">
                     <td class="px-4 py-3 w-2 border-t">
                         {{ index + 1 }}
                     </td>
