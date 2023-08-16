@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Jobs\SendMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +11,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Car extends Model
 {
     use HasFactory;
+
+    const STATUSES_OF_FILLING_IMAGES = ['BOTH', 'ON', 'OUT'];
+    const NO_STATUS = 'NO';
 
     protected $fillable = [
         'name',
@@ -36,9 +40,37 @@ class Car extends Model
             $car->creater = Auth::user()->name;
             $car->updater = Auth::user()->name;
         });
+
         static::updating(function ($car) {
             $car->updater = Auth::user()->name;
         });
+
+        static::saved(function ($car) {
+
+            $type = $car->wasChanged('terminalImages') && $car->wasChanged('outImages')
+                ? self::STATUSES_OF_FILLING_IMAGES[0]
+                : ( $car->wasChanged('terminalImages')
+                    ? self::STATUSES_OF_FILLING_IMAGES[1]
+                    : ($car->wasChanged('outImages')
+                        ? self::STATUSES_OF_FILLING_IMAGES[2]
+                        : self::NO_STATUS)
+                );
+
+            if (in_array($type, self::STATUSES_OF_FILLING_IMAGES)) {
+                if ($type=== self::STATUSES_OF_FILLING_IMAGES[1]) {
+                    $text = sprintf(__('mail.bodytext_on_terminal'), $car->vin, $car->name);
+                } elseif ($type === self::STATUSES_OF_FILLING_IMAGES[2]) {
+                    $text = sprintf(__('mail.bodytext_out_terminal'), $car->vin, $car->name);
+                } else {
+                    $text = sprintf(__('mail.bodytext_on_terminal'), $car->vin, $car->name);
+                    SendMail::dispatch($text);
+                    $text = sprintf(__('mail.bodytext_out_terminal'), $car->vin, $car->name);
+                    SendMail::dispatch($text);
+                }
+                SendMail::dispatch($text);
+            }
+        });
+
     }
 
     public function scopeFilter($query, array $filters)

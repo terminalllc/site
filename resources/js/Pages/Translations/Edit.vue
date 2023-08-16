@@ -65,7 +65,7 @@ export default {
     },
     methods: {
         submit() {
-            this.form.post(this.$route("translations.update"));
+            this.form.put(this.$route("translations.update", this.translation.id));
         },
         changeLang: function (e) {
             this.current_locale = e.target.value
