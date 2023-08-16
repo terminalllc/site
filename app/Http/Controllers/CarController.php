@@ -20,7 +20,7 @@ class CarController extends Controller
         return Inertia::render('Cars/Index', [
             'filters' => request('search', []),
             'cars' => Car::filter(request()->only('search'))
-                ->paginate(10)
+                ->paginate(50)
                 ->through(fn ($car) => [
                     'id' => $car->id,
                     'name' => $car->name,

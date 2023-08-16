@@ -21,7 +21,7 @@ class TranslationsController extends Controller
             'filters' => Request::all('search'),
             'translations' => LanguageLine
                 ::whereRaw("lower(text->'$.uk') like lower(?)", ["%{$search['search']}%"])
-                ->paginate()
+                ->paginate(50)
                 ->withQueryString()
                 ->through(function ($translation) {
                     return [
