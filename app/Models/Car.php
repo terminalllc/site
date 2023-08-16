@@ -83,6 +83,11 @@ class Car extends Model
         });
     }
 
+    public function scopeActive($query)
+    {
+            $query->where('status',1);
+    }
+
     public function scopeSearch($query, $search)
     {
         $query->when($search, function ($query, $search) {

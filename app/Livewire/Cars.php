@@ -19,7 +19,7 @@ class Cars extends Component
     public function render()
     {
         if ($this->search) {
-            $this->car = Car::search($this->search)->first();
+            $this->car = Car::search($this->search)->active()->first();
         }
 
         $this->search = null;
