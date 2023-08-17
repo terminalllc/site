@@ -25,6 +25,7 @@
                         class-div="lg:w-1/2" label="Date of arrival at the terminal" />
                     <text-input v-model.trim="form.out_terminal_at" type="date" :error="form.errors.out_terminal_at"
                         class-div="lg:w-1/2" label="Date of departure from the terminal" />
+                    <textarea-input v-model.trim="form.comment" class-div="lg:w-1/2" label="Comment" />
                     <div class="items-center mb-6 pb-8 pr-6 w-1/2">
                         <label class="form-label"> Status: </label>
                         <input v-model="form.status" :true-value="1" :false-value="0" class="mr-2 pl-6 w-6 h-6"
@@ -156,6 +157,7 @@ export default {
                 outImages: this.car.outImages,
                 on_terminal_at: this.car.on_terminal_at,
                 out_terminal_at: this.car.out_terminal_at,
+                comment: this.car.comment,
                 status: this.car.status,
             }),
             noImage: this.$page.props.image.noImagePath,

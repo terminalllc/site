@@ -26,6 +26,7 @@ class Car extends Model
         'status',
         'creater',
         'updater',
+        'comment',
     ];
 
     protected $casts = [

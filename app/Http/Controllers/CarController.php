@@ -27,7 +27,8 @@ class CarController extends Controller
                     'name' => $car->name,
                     'vin' => $car->vin,
                     'presentImages'=> !empty($car->containerImages) || !empty($car->terminalImages) || !empty($car->outImages),
-                    'status' => $car->status ? 'Увімкнено' : 'Вимкнено',
+                    'comment' => $car->comment,
+                    'status' => $car->status ? 'On' : 'Off',
                 ]),
         ]);
     }

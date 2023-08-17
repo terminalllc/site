@@ -22,6 +22,7 @@
                     <th class="px-4">#</th>
                     <th class="px-4">Name</th>
                     <th class="px-4">VIN</th>
+                    <th class="px-4">Comment</th>
                     <th class="px-4">Status</th>
                     <th class="pb-12 px-4" />
                 </tr>
@@ -34,6 +35,9 @@
                     </td>
                     <td class="px-4 border-t">
                         {{ car.vin }}
+                    </td>
+                    <td class="px-4 border-t">
+                        {{ car.comment }}
                     </td>
                     <td class="px-4 border-t">
                         {{ car.status }}

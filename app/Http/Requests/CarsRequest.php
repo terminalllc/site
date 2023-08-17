@@ -36,6 +36,7 @@ class CarsRequest extends FormRequest
             'outImages.*' => 'required',
             'on_terminal_at' => 'date',
             'out_terminal_at' => 'nullable|date',
+            'comment' => 'nullable|string',
             'status' => 'boolean',
         ];
     }
