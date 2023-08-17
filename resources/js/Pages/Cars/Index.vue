@@ -22,6 +22,9 @@
                     <th class="px-4">#</th>
                     <th class="px-4">Name</th>
                     <th class="px-4">VIN</th>
+                    <th class="px-4">Client</th>
+                    <th class="px-4">Summa</th>
+                    <th class="px-4">Payment status</th>
                     <th class="px-4">Comment</th>
                     <th class="px-4">Status</th>
                     <th class="pb-12 px-4" />
@@ -35,6 +38,15 @@
                     </td>
                     <td class="px-4 border-t">
                         {{ car.vin }}
+                    </td>
+                    <td class="px-4 border-t">
+                        {{ car.client }}
+                    </td>
+                    <td class="px-4 border-t">
+                        {{ car.payment_summa }}
+                    </td>
+                    <td class="px-4 border-t">
+                        {{ car.payment_status }}
                     </td>
                     <td class="px-4 border-t">
                         {{ car.comment }}
@@ -52,7 +64,7 @@
                     </td>
                 </tr>
                 <tr v-if="cars.data.length === 0">
-                    <td class="px-6 py-4 border-t" colspan="6">
+                    <td class="px-6 py-4 border-t" colspan="9">
                         No cars found
                     </td>
                 </tr>

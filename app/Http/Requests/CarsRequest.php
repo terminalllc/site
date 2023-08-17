@@ -38,6 +38,14 @@ class CarsRequest extends FormRequest
             'out_terminal_at' => 'nullable|date',
             'comment' => 'nullable|string',
             'status' => 'boolean',
+            'client_id' => 'nullable|exists:clients,id',
+            'payment_summa' => 'nullable|numeric',
+            'user_clicked_payment_status' => 'nullable|string',
+            'payment_status' => 'boolean',
+/*         'client_id',
+        'payment_summa',
+        'user_clicked_payment_status',
+        'payment_status', */
         ];
     }
 }

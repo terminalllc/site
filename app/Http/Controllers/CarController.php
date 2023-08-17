@@ -28,6 +28,9 @@ class CarController extends Controller
                     'vin' => $car->vin,
                     'presentImages'=> !empty($car->containerImages) || !empty($car->terminalImages) || !empty($car->outImages),
                     'comment' => $car->comment,
+                    'client' => $car->client?->name,
+                    'payment_summa' => $car->payment_summa,
+                    'payment_status' => $car->payment_status ? 'Paid' : 'Not paid',
                     'status' => $car->status ? 'On' : 'Off',
                 ]),
         ]);

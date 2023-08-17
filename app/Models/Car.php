@@ -6,11 +6,13 @@ namespace App\Models;
 use App\Jobs\SendMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Car extends Model
 {
-    use HasFactory;
+    use HasFactory,
+        SoftDeletes;
 
     const STATUSES_OF_FILLING_IMAGES = ['BOTH', 'ON', 'OUT'];
     const NO_STATUS = 'NO';
@@ -27,6 +29,10 @@ class Car extends Model
         'creater',
         'updater',
         'comment',
+        'client_id',
+        'payment_summa',
+        'user_clicked_payment_status',
+        'payment_status',
     ];
 
     protected $casts = [
@@ -87,6 +93,11 @@ class Car extends Model
     public function scopeActive($query)
     {
             $query->where('status',1);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id');
     }
 
     public function scopeSearch($query, $search)
