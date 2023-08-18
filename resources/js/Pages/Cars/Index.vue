@@ -23,7 +23,7 @@
                     <th class="px-4">Name</th>
                     <th class="px-4">VIN</th>
                     <th class="px-4">Client</th>
-                    <th class="px-4">Summa</th>
+                    <th class="px-4">Amount</th>
                     <th class="px-4">Payment status</th>
                     <th class="px-4">Comment</th>
                     <th class="px-4">Status</th>
