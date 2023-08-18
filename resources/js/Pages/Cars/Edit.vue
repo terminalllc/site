@@ -21,10 +21,30 @@
                 <div v-show="activeTab === 0" class="flex flex-wrap -mb-8 -mr-6 p-8">
                     <text-input v-model.trim="form.name" :error="form.errors.name" class-div="lg:w-1/2" label="Name" />
                     <text-input v-model.trim="form.vin" :error="form.errors.vin" class-div="lg:w-1/2" label="VIN" />
-                    <text-input v-model.trim="form.on_terminal_at" type="date" :error="form.errors.on_terminal_at"
-                        class-div="lg:w-1/2" label="Date of arrival at the terminal" />
-                    <text-input v-model.trim="form.out_terminal_at" type="date" :error="form.errors.out_terminal_at"
-                        class-div="lg:w-1/2" label="Date of departure from the terminal" />
+                    <div class="flex w-full flex-col pb-8 mr-6">
+                        <label class="form-label">Clients</label>
+                        <VueMultiselect
+                            v-model="form.client_id"
+                            label="name"
+                            track-by="id"
+                            placeholder=""
+                            open-direction="bottom"
+                            :options="clients"
+                            :searchable="true"
+                            :clear-on-select="false"
+                            :close-on-select="true"
+                            :options-limit="10"
+                            :limit="4"
+                            :max-height="600"
+                            :show-no-results="true"
+                            :hide-selected="false">
+                        </VueMultiselect>
+                    </div>
+                    <text-input v-model.trim="form.on_terminal_at" :is-disabled="form.payment_status == 1" type="date"
+                        :error="form.errors.on_terminal_at" class-div="lg:w-1/2" label="Date of arrival at the terminal" />
+                    <text-input v-model.trim="form.out_terminal_at" :is-disabled="form.payment_status == 1" type="date"
+                        :error="form.errors.out_terminal_at" class-div="lg:w-1/2"
+                        label="Date of departure from the terminal" />
                     <textarea-input v-model.trim="form.comment" class-div="lg:w-1/2" label="Comment" />
                     <div class="items-center mb-6 pb-8 pr-6 w-1/2">
                         <label class="form-label"> Status: </label>
@@ -133,6 +153,7 @@ import TextareaInput from "@/Shared/TextareaInput.vue";
 import FileInputImage from "@/Shared/FileInputImage.vue";
 import FileInputZip from "@/Shared/FileInputZip.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
+import VueMultiselect  from 'vue-multiselect'
 
 export default {
     components: {
@@ -141,11 +162,13 @@ export default {
         TextareaInput,
         FileInputImage,
         FileInputZip,
+        VueMultiselect,
     },
     layout: Layout,
     remember: "form",
     props: {
         car: Object,
+        clients: Array
     },
     data() {
         return {
@@ -158,6 +181,8 @@ export default {
                 on_terminal_at: this.car.on_terminal_at,
                 out_terminal_at: this.car.out_terminal_at,
                 comment: this.car.comment,
+                payment_status: this.car.payment_status,
+                client_id: this.car.client_id,
                 status: this.car.status,
             }),
             noImage: this.$page.props.image.noImagePath,
@@ -195,3 +220,4 @@ export default {
     },
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>

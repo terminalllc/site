@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Inertia\Inertia;
-use App\Models\Language;
-use Illuminate\Http\Request;
 use App\Http\Traits\MsgTrait;
 use App\Http\Requests\CarsRequest;
+use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class CarController extends Controller
@@ -43,7 +43,9 @@ class CarController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Cars/Create');
+        return Inertia::render('Cars/Create',[
+            'clients' => Client::select('id', 'name')->get(),
+        ]);
     }
 
     /**
@@ -62,7 +64,13 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        return Inertia::render('Cars/Edit', ['car' => $car]);
+        return Inertia::render('Cars/Edit', [
+            'car' => tap($car, function ($car) {
+                // Get client as object for search input.
+                $car->client_id = $car->client;
+            }),
+            'clients'=> Client::select('id','name')->get(),
+        ]);
     }
 
     /**
@@ -83,5 +91,18 @@ class CarController extends Controller
         $car->delete();
 
         return Redirect::route('cars.index')->with('success', 'Car deleted.');
+    }
+
+    public function changeStatusPayment(Car $car)
+    {
+        $car->update([
+            'payment_status' => !$car->payment_status,
+            'user_clicked_payment_status' => Auth::user()->name,
+            'paymented_at' => now(),
+        ]);
+
+        $message = 'Payment status changed successfully!';
+
+        return Redirect::route('cars.index')->with('success', $message);
     }
 }

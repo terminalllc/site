@@ -1,6 +1,11 @@
 <template>
     <div>
         <div class="mb-2">
+            <Link class="group flex items-center justify-start py-2 text-center" :href="this.$route('clients.index')">
+            <div :class="isUrl('admin/clients') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">
+                Clients
+            </div>
+            </Link>
             <Link class="group flex items-center justify-start py-2 text-center" :href="this.$route('cars.index')">
             <div :class="isUrl('admin/cars') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">
                 Cars

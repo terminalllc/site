@@ -27,10 +27,10 @@
                         {{ user.email }}
                     </td>
                     <td class="flex justify-end py-2 border-t">
-                        <Link class="px-2" :href="this.$route('users.edit', user.id)" tabindex="-1" title="Змінити">
+                        <Link class="px-2" :href="this.$route('users.edit', user.id)" tabindex="-1" title="Edit">
                         <icon name="pencil-square" class="block text-green-600" />
                         </Link>
-                        <button title="Видалити" class="px-2" @click.prevent="showModal(user.id)">
+                        <button title="Delete" class="px-2" @click.prevent="showModal(user.id)">
                             <icon name="trash" class="block text-red-600" />
                         </button>
                     </td>

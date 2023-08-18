@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TranslationsController;
@@ -38,7 +39,11 @@ Route::middleware('can:isAdmin', 'auth')->group(function () {
     Route::resource('users', UsersController::class);
 
     // Cars.
+    Route::put('cars/payment/{car}', [CarController::class, 'changeStatusPayment'])->name('cars.changeStatusPayment');
     Route::resource('cars', CarController::class);
+
+    // Clients.
+    Route::resource('clients', ClientController::class);
 
     // Languages.
     Route::resource('languages', LanguageController::class);

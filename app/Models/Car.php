@@ -32,6 +32,7 @@ class Car extends Model
         'client_id',
         'payment_summa',
         'user_clicked_payment_status',
+        'paymented_at',
         'payment_status',
     ];
 

@@ -21,6 +21,25 @@
                 <div v-show="activeTab === 0" class="flex flex-wrap -mb-8 -mr-6 p-8">
                     <text-input v-model.trim="form.name" :error="form.errors.name" class-div="lg:w-1/2" label="Name" />
                     <text-input v-model.trim="form.vin" :error="form.errors.vin" class-div="lg:w-1/2" label="VIN" />
+                    <div class="flex w-full flex-col pb-8 mr-6">
+                        <label class="form-label">Clients</label>
+                        <VueMultiselect
+                            v-model="form.client_id"
+                            label="name"
+                            track-by="id"
+                            placeholder=""
+                            open-direction="bottom"
+                            :options="clients"
+                            :searchable="true"
+                            :clear-on-select="false"
+                            :close-on-select="true"
+                            :options-limit="10"
+                            :limit="4"
+                            :max-height="600"
+                            :show-no-results="true"
+                            :hide-selected="false">
+                        </VueMultiselect>
+                    </div>
                     <text-input v-model.trim="form.on_terminal_at" type="date" :error="form.errors.on_terminal_at"
                         class-div="lg:w-1/2" label="Date of arrival at the terminal" />
                     <text-input v-model.trim="form.out_terminal_at" type="date" :error="form.errors.out_terminal_at" class-div="lg:w-1/2" label="Date of departure from the terminal" />
@@ -99,6 +118,7 @@ import TextareaInput from "@/Shared/TextareaInput.vue";
 import FileInputImage from "@/Shared/FileInputImage.vue";
 import FileInputZip from "@/Shared/FileInputZip.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
+import VueMultiselect from 'vue-multiselect'
 
 export default {
     components: {
@@ -107,8 +127,12 @@ export default {
         TextareaInput,
         FileInputImage,
         FileInputZip,
+        VueMultiselect,
     },
     layout: Layout,
+    props: {
+        clients: Array
+    },
     remember: "form",
     data() {
         return {
@@ -121,6 +145,8 @@ export default {
                 on_terminal_at: new Date(),
                 out_terminal_at: null,
                 comment: null,
+                payment_status: false,
+                client_id: null,
                 status: true,
             }),
             noImage: this.$page.props.image.noImagePath,
@@ -158,3 +184,4 @@ export default {
     },
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('client_id')->nullable()->constrained()->onDelete('set null');
             $table->double('payment_summa')->default(0);
             $table->string('user_clicked_payment_status')->nullable();
+            $table->timestamp('paymented_at')->nullable();
             $table->boolean('payment_status')->default(false);
         });
     }

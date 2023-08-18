@@ -45,7 +45,7 @@
                     <td class="px-4 border-t">
                         {{ car.payment_summa }}
                     </td>
-                    <td class="px-4 border-t">
+                    <td class="px-4 border-t" :class="car.payment_status !== 'Paid' ? ' bg-rose-600' : ''">
                         {{ car.payment_status }}
                     </td>
                     <td class="px-4 border-t">
@@ -55,10 +55,14 @@
                         {{ car.status }}
                     </td>
                     <td class="flex justify-end py-2 border-t">
-                        <Link class="px-2" :href="this.$route('cars.edit', car.id)" tabindex="-1" title="Змінити">
+                        <button title="Payment" class="px-2"
+                            @click.prevent="changeStatusPayment(car.id)">
+                            <icon name="banknotes" class="block text-rose-600" />
+                        </button>
+                        <Link class="px-2" :href="this.$route('cars.edit', car.id)" tabindex="-1" title="Edit">
                         <icon name="pencil-square" class="block text-green-600" />
                         </Link>
-                        <button title="Видалити" class="px-2" @click.prevent="showModal(car.id)">
+                        <button title="Delete" class="px-2" @click.prevent="showModal(car.id)">
                             <icon name="trash" class="block text-red-600" />
                         </button>
                     </td>
@@ -119,6 +123,15 @@ export default {
             this.$swal({}).then((result) => {
                 if (result.value) {
                     this.$inertia.delete(this.$route("cars.destroy", id));
+                }
+            });
+        },
+        changeStatusPayment(id) {
+            this.$swal({
+                title: 'Are you sure you want to change your payment status?',
+            }).then((result) => {
+                if (result.value) {
+                    this.$inertia.put(this.$route("cars.changeStatusPayment", id));
                 }
             });
         },

@@ -13,11 +13,11 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 const options = {
     confirmButtonColor: '#e53e3e',
     cancelButtonColor: '#16a34a',
-    title: 'Ви дійсно хочете видалити запис?',
+    title: 'Are you sure you want to delete the entry?',
     type: 'warning',
     showCancelButton: true,
-    confirmButtonText: 'Підтвердити',
-    cancelButtonText: 'Відміна',
+    confirmButtonText: 'Confirm',
+    cancelButtonText: 'Cancel',
     showCloseButton: false,
     showLoaderOnConfirm: false,
     showClass: {

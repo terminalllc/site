@@ -25,7 +25,8 @@
                     <th class="px-4">Text</th>
                     <th class="pb-12 px-4" />
                 </tr>
-                <tr v-for="(translation, index) in translations.data" :key="translation.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+                <tr v-for="(translation, index) in translations.data" :key="translation.id"
+                    class="hover:bg-gray-100 focus-within:bg-gray-100">
                     <td class="px-4 py-3 w-2 border-t">
                         {{ index + 1 }}
                     </td>
@@ -39,10 +40,11 @@
                         {{ translation.text }}
                     </td>
                     <td class="flex justify-end py-2 border-t">
-                        <Link class="px-2" :href="this.$route('translations.edit', translation.id)" tabindex="-1" title="Змінити">
+                        <Link class="px-2" :href="this.$route('translations.edit', translation.id)" tabindex="-1"
+                            title="Edit">
                         <icon name="pencil-square" class="block text-green-600" />
                         </Link>
-                        <button title="Видалити" class="px-2" @click.prevent="showModal(translation.id)">
+                        <button title="Delete" class="px-2" @click.prevent="showModal(translation.id)">
                             <icon name="trash" class="block text-red-600" />
                         </button>
                     </td>
