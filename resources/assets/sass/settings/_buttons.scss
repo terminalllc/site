@@ -30,6 +30,9 @@ button {
         border: 1px solid var(--color-orange-1);
         background-color: var(--color-white);
     }
+    &.btn-buy {
+        margin-top: 15px;
+    }
     &.btn-havenot {
         background-color: var(--color-grey);
         border: 1px solid var(--color-grey);

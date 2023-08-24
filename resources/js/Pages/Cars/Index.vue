@@ -26,6 +26,7 @@
                     <th class="px-4">Amount</th>
                     <th class="px-4">Payment status</th>
                     <th class="px-4">Comment</th>
+                    <th class="px-4">Files</th>
                     <th class="px-4">Status</th>
                     <th class="pb-12 px-4" />
                 </tr>
@@ -50,6 +51,17 @@
                     </td>
                     <td class="px-4 border-t">
                         {{ car.comment }}
+                    </td>
+                    <td class="px-4 border-t">
+                        <a v-if="car.power_of_attorney_delivery" :href="car.power_of_attorney_delivery" target="_blank" class="underline py-1">
+                            <Icon name="download"></Icon>
+                            For Transportation
+                        </a>
+                        <br>
+                        <a v-if="car.power_of_attorney_import" :href="car.power_of_attorney_import" target="_blank" class="underline py-1">
+                            <Icon name="download"></Icon>
+                            For Import
+                        </a>
                     </td>
                     <td class="px-4 border-t">
                         {{ car.status }}

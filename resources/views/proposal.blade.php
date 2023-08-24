@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
 <div>
-    <livewire:cars />
+    <livewire:proposals />
 </div>
 @endsection

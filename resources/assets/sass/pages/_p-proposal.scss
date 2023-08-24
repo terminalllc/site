@@ -1,0 +1,123 @@
+.p-proposal {
+    &-top {
+        &-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -20px;
+            margin-right: -20px;
+            @include desktop-little{
+                margin: 0;
+            }
+            //@include desktop-block {
+            //    margin: 0;
+            //}
+        }
+    }
+    .product {
+        &-img {
+            flex: 0 0 50%;
+            max-width: 540px;
+            padding-left: 20px;
+            padding-right: 20px;
+            @include desktop-little{
+                padding-left: 0;
+            }
+            @include desktop-block {
+                padding-left: 0;
+                padding-right: 0;
+                max-width: 50%;
+            }
+            @include middle-tablet {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            &-wrap {
+                width: 100%;
+                border-radius: 5px;
+                box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.1), 0px 4px 6px rgba(0, 0, 0, 0.05);
+                z-index: 1;
+            }
+            &-main {
+                position: relative;
+                @include phone{
+                    height: 275px;
+                }
+            }
+        }
+        &-labels {
+            position: absolute;
+            top: 13px;
+            left: 17px;
+            z-index: 2;
+            &-label {
+                &--label {}
+            }
+        }
+        &-info {
+            flex: 1;
+            padding-left: 20px;
+            padding-right: 20px;
+            @include desktop-little{
+                padding-right: 0;
+            }
+            @include desktop-block {
+                padding-left: 20px;
+                padding-right: 0;
+            }
+            @include middle-tablet {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding-top: 40px;
+                padding-left: 0;
+            }
+            &-wrap {}
+        }
+        &-title {
+            &--title {
+                font-size: 24px;
+                text-transform: uppercase;
+                font-weight: var(--font-medium);
+            }
+        }
+        &-top {
+            padding-top: 30px;
+            &-wrap {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            &-left {
+                padding-right: 20px;
+                flex: 1;
+                @include desktop-block {
+                    padding-right: 0;
+                }
+            }
+        }
+        &-btn {
+            @include phone {
+                padding-top: 12px;
+                text-align: center;
+            }
+            &-cart {
+                padding-top: 7px;
+                @include phone {
+                    padding-top: 0;
+                }
+            }
+            &-order {
+                padding-top: 10px;
+                @include phone {
+                    padding-top: 15px;
+                }
+            }
+            .btn {
+                max-width: 167px;
+                @include phone {
+                    max-width: 150px;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

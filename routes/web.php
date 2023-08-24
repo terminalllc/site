@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 */
 
 Route::multilingual('/', [HomeController::class,'index'])->name('home');
+Route::multilingual('proposal');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])

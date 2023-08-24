@@ -282,6 +282,23 @@
     margin-right: auto;
     max-width: 520px;
 }
+.form-proposal {
+    max-width:320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.error {
+    color: var(--color-red);
+}
+.success {
+    color: var(--color-green-2);
+}
+h1{
+    font-size: 24px;
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
 .new-products {
     background-color: #ffffffc9;
     position: absolute;

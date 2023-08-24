@@ -31,6 +31,8 @@ class CarController extends Controller
                     'client' => $car->client?->name,
                     'payment_summa' => $car->payment_summa,
                     'payment_status' => $car->payment_status ? 'Paid' : 'Not paid',
+                    'power_of_attorney_delivery' => $car->power_of_attorney_delivery,
+                    'power_of_attorney_import' => $car->power_of_attorney_import,
                     'status' => $car->status ? 'On' : 'Off',
                 ]),
         ]);
