@@ -44,14 +44,16 @@ class Car extends Model
 
     protected static function booted()
     {
-        static::creating(function ($car) {
-            $car->creater = Auth::user()->name;
-            $car->updater = Auth::user()->name;
-        });
+        if (Auth::check()) {
+            static::creating(function ($car) {
+                $car->creater = Auth::user()->name;
+                $car->updater = Auth::user()->name;
+            });
 
-        static::updating(function ($car) {
-            $car->updater = Auth::user()->name;
-        });
+            static::updating(function ($car) {
+                $car->updater = Auth::user()->name;
+            });
+        }
 
         static::saved(function ($car) {
 
