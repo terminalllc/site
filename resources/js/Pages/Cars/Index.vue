@@ -55,7 +55,7 @@
                     <td class="px-4 border-t">
                         <a v-if="car.power_of_attorney_delivery" :href="car.power_of_attorney_delivery" target="_blank" download class="underline py-1">
                             <Icon name="download"></Icon>
-                            For Transportation
+                            Application
                         </a>
                         <br>
                         <a v-if="car.power_of_attorney_import" :href="car.power_of_attorney_import" target="_blank" download class="underline py-1">
