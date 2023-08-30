@@ -26,7 +26,4 @@ Route::middleware(['guest'])->group(function () {
     Route::post('login', [AuthenticatedSessionController::class, 'store'])
         ->name('login.store');
 });
-Route::get('test', function(){
-    $proposal = Proposal::whereId(14)->first();
-    var_dump($proposal->date_pick_up->format('d.m.Y'));
-});
+
