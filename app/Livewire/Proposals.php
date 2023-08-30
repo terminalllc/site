@@ -4,10 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Proposal;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
 use App\Jobs\PowerOfAttorneyImport;
-use App\Jobs\PowerOfAttorneyDelivery;
+use App\Jobs\ApplicationOnRegistration;
+
 
 class Proposals extends Component
 {
@@ -42,7 +42,7 @@ class Proposals extends Component
         $proposal = Proposal::create($validated);
 
         $this->reset();
-        PowerOfAttorneyDelivery::dispatch($proposal);
+        ApplicationOnRegistration::dispatch($proposal);
         PowerOfAttorneyImport::dispatch($proposal);
 
         return redirect()->back()->withSuccess('Заявка збережена');

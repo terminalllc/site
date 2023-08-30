@@ -1,8 +1,10 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Models\Proposal;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +26,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('login', [AuthenticatedSessionController::class, 'store'])
         ->name('login.store');
 });
-
+Route::get('test', function(){
+    $proposal = Proposal::whereId(14)->first();
+    var_dump($proposal->date_pick_up->format('d.m.Y'));
+});

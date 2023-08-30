@@ -24,4 +24,8 @@ class Proposal extends Model
         'phone_driver',
         'date_pick_up',
     ];
+
+    protected $casts = [
+        'date_pick_up' => 'date:d.m.Y',
+    ];
 }

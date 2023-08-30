@@ -5,13 +5,14 @@ namespace App\Jobs;
 
 use App\Models\Car;
 use App\Models\Proposal;
+use Codedge\Fpdf\Fpdf\Fpdf;
+use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
-use Codedge\Fpdf\Fpdf\Fpdf;
 
 class PowerOfAttorneyImport implements ShouldQueue
 {
@@ -60,21 +61,21 @@ class PowerOfAttorneyImport implements ShouldQueue
             $fpdf->Cell(50, 30, $text, 0, 0, 'C');
             $fpdf->Ln(8);
 
-            $fpdf->Cell(145, 30, $this->proposal->date_pick_up);
+            $fpdf->Cell(145, 30, $this->proposal->date_pick_up->format('d.m.Y'));
             $fpdf->Ln(8);
 
             $text = iconv('UTF-8', 'cp1251//IGNORE', 'Довіреність');
             $fpdf->Cell(190, 60, $text, 0, 0, 'C');
             $fpdf->Ln(40);
 
-            $text = iconv('UTF-8', 'cp1251//IGNORE', 'Справжнім компанія ТОВ «Ей Джі Термінал» довіряє '. $this->proposal->name_driver.' ввоз легкових автомобілів:');
+            $text = iconv('UTF-8', 'cp1251//IGNORE', 'Справжнім компанія ТОВ «Ей Джі Термінал» довіряє водію '. $this->proposal->name_driver. ' отримати в ТОВ «Одіссея» вантаж:');
             $fpdf->MultiCell(180, 10, $text, 0, 'C');
 
             $fpdf->SetFont('DejaVu', 'B', 14);
             $text = iconv('UTF-8', 'cp1251//IGNORE', strtoupper($car->name) . ' ' . strtoupper($car->vin));
             $fpdf->MultiCell(180, 10, $text, 0, 'C');
             $fpdf->SetFont('DejaVu', '', 12);
-            $text = iconv('UTF-8', 'cp1251//IGNORE', 'на територію ТОВ «Одіссея» для подальшого митного оформлення.');
+            $text = iconv('UTF-8', 'cp1251//IGNORE', 'для доставки за місцем призначення.');
             $fpdf->MultiCell(180, 10, $text, 0, 'C');
             $fpdf->SetFont('DejaVu', 'B', 14);
             $tow = $this->proposal->model_tow_track . ' ' . $this->proposal->number_tow_track . ' ' . $this->proposal->number_trailer;
@@ -92,7 +93,9 @@ class PowerOfAttorneyImport implements ShouldQueue
 
             $text = iconv('UTF-8', 'cp1251//IGNORE', '___________________ Захарчук А. М.');
             $fpdf->MultiCell(90, 10, $text, 0, 'R');
-            $filepath = 'storage/' . $car->vin . '_AnImportPermit.pdf';
+            $phone = Str::remove('+',$this->proposal->phone_driver);
+            $phone = Str::remove(' ', $phone);
+            $filepath = 'storage/'. $phone . '_'. $car->vin . '_AnImportPermit.pdf';
             $fpdf->Output('f', $filepath);
             $car->power_of_attorney_import = '/' . $filepath;
             $car->save();
