@@ -33,6 +33,10 @@ module.exports = {
             },
         },
         extend: {
+            maxWidth: {
+                '56': '14rem',
+                '80': '20rem',
+            },
             borderColor: theme => ({
                 DEFAULT: theme('colors.gray.200', 'currentColor'),
             }),

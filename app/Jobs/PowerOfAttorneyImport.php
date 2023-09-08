@@ -95,7 +95,9 @@ class PowerOfAttorneyImport implements ShouldQueue
             $fpdf->MultiCell(90, 10, $text, 0, 'R');
             $phone = Str::remove('+',$this->proposal->phone_driver);
             $phone = Str::remove(' ', $phone);
-            $filepath = 'storage/'. $phone . '_'. $car->vin . '_AnImportPermit.pdf';
+            $phone = Str::remove(')', $phone);
+            $phone = Str::remove('(', $phone);
+            $filepath = 'storage/PowerOfAttorney_'. $phone . '_'. $car->vin . '.pdf';
             $fpdf->Output('f', $filepath);
             $car->power_of_attorney_import = '/' . $filepath;
             $car->save();

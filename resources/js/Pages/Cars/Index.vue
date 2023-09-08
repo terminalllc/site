@@ -53,14 +53,15 @@
                         {{ car.comment }}
                     </td>
                     <td class="px-4 border-t">
+                        <!-- <td class="px-4 max-w-56 border-t truncate hover:text-clip hover:max-w-80"> -->
                         <a v-if="car.power_of_attorney_delivery" :href="car.power_of_attorney_delivery" target="_blank" download class="underline py-1">
                             <Icon name="download"></Icon>
-                            Application
+                            {{ car.power_of_attorney_delivery.replace('/storage/', '').replace('.pdf', '') }}
                         </a>
                         <br>
                         <a v-if="car.power_of_attorney_import" :href="car.power_of_attorney_import" target="_blank" download class="underline py-1">
                             <Icon name="download"></Icon>
-                            For Import
+                            {{ car.power_of_attorney_import.replace('/storage/', '').replace('.pdf', '') }}
                         </a>
                     </td>
                     <td class="px-4 border-t">

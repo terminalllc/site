@@ -212,7 +212,7 @@ class ApplicationOnRegistration implements ShouldQueue
             $text = iconv('UTF-8', 'cp1251//IGNORE', 'Територія ТОВ «Одіссея»');
             $fpdf->MultiCell(25, 5, $text, 0, 'C');
             $fpdf->SetXY(110, 215);
-            $text = iconv('UTF-8', 'cp1251//IGNORE', strtoupper($this->proposal->number_tow_track));
+            $text = iconv('UTF-8', 'cp1251//IGNORE', strtoupper($this->proposal->number_tow_track. ' ' . $this->proposal->number_trailer));
             $fpdf->MultiCell(25, 5, $text, 0, 'C');
             $fpdf->SetXY(135, 215);
             $text = iconv('UTF-8', 'cp1251//IGNORE', strtoupper($this->proposal->model_tow_track).' Вантажний');
@@ -239,7 +239,9 @@ class ApplicationOnRegistration implements ShouldQueue
             $fpdf->MultiCell(65, 5, $text, 0, 'L');
             $phone = Str::remove('+', $this->proposal->phone_driver);
             $phone = Str::remove(' ', $phone);
-            $filepath = 'storage/' . $phone . '_' . $car->vin . '_ApplicationOnRegistration.pdf';
+            $phone = Str::remove(')', $phone);
+            $phone = Str::remove('(', $phone);
+            $filepath = 'storage/' . $phone . '_' . $car->vin . '.pdf';
             $fpdf->Output('f', $filepath);
             $car->power_of_attorney_delivery = '/' . $filepath;
             $car->save();
