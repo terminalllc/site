@@ -53,7 +53,7 @@ class HandleInertiaRequests extends Middleware
                     'noImagePath' => '/images/no-image-100.png',
                 ];
             },
-            'isAdmin'=> Auth::user()->role === 'admin',
+            'isAdmin'=> Auth::user()?->role === 'admin',
             'langs' =>  LanguageService::getCodes(['code']),
             'default_lang' => LanguageService::getCodeDefault(),
             'flash' => function () use ($request) {
