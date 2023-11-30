@@ -40,8 +40,10 @@
               </div>
                 <template v-slot:dropdown>
                     <div class="mt-2 py-2 shadow-xl bg-white rounded text-sm">
-                        <Link  class="block px-6 py-2 hover:bg-indigo-500 hover:text-white" :href="this.$route('users.edit', $page.props.auth.user.id)">Profile</Link >
-                        <Link  class="block px-6 py-2 hover:bg-indigo-500 hover:text-white" :href="this.$route('users.index')">Users</Link >
+                        <template v-if="this.$page.props.isAdmin">
+                            <Link  class="block px-6 py-2 hover:bg-indigo-500 hover:text-white" :href="this.$route('users.edit', $page.props.auth.user.id)">Profile</Link >
+                            <Link class="block px-6 py-2 hover:bg-indigo-500 hover:text-white" :href="this.$route('users.index')">Users</Link >
+                        </template>
                         <Link  class="block px-6 py-2 hover:bg-indigo-500 hover:text-white w-full text-left" :href="this.$route('logout')" method="delete" as="button">Logout</Link >
                     </div>
                 </template>

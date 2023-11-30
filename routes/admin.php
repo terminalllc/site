@@ -25,7 +25,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 
-Route::middleware('can:isAdmin', 'auth')->group(function () {
+Route::middleware('auth')->group(function () {
 
     Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');

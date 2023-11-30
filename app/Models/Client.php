@@ -24,13 +24,14 @@ class Client extends Model
 
     protected static function booted()
     {
-        static::creating(function ($car) {
-            $car->creater = Auth::user()->name;
-            $car->updater = Auth::user()->name;
+        static::creating(function ($client) {
+            $client->creater_id = Auth::id();
+            $client->creater = Auth::user()->name;
+            $client->updater = Auth::user()->name;
         });
 
-        static::updating(function ($car) {
-            $car->updater = Auth::user()->name;
+        static::updating(function ($client) {
+            $client->updater = Auth::user()->name;
         });
 
     }

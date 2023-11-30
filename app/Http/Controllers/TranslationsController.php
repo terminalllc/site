@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Http\Traits\MsgTrait;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\TranslationsRequest;
@@ -13,6 +14,16 @@ use Spatie\TranslationLoader\LanguageLine;
 class TranslationsController extends Controller
 {
     use MsgTrait;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->role !== 'admin') {
+                return redirect()->route('cars.index');
+            }
+            return $next($request);
+        });
+    }
 
     public function index()
 	{

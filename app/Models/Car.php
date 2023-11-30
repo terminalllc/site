@@ -46,6 +46,7 @@ class Car extends Model
     {
         if (Auth::check()) {
             static::creating(function ($car) {
+                $car->creater_id = Auth::id();
                 $car->creater = Auth::user()->name;
                 $car->updater = Auth::user()->name;
             });

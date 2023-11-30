@@ -20,6 +20,9 @@ class CarController extends Controller
         return Inertia::render('Cars/Index', [
             'filters' => request('search', []),
             'cars' => Car::filter(request()->only('search'))
+                ->when(Auth::user()->role !== 'admin', function ($query, $search) {
+                    $query->where('creater_id', Auth::id());
+                })
                 ->latest('updated_at')
                 ->paginate(50)
                 ->through(fn ($car) => [
@@ -37,9 +40,7 @@ class CarController extends Controller
                 ]),
         ]);
     }
-    /*         'containerImages' => 'array',
-        'terminalImages' => 'array',
-        'outImages' => 'array', */
+
     /**
      * Show the form for creating a new resource.
      */

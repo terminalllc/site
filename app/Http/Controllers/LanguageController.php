@@ -6,12 +6,23 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Language;
 use App\Http\Traits\MsgTrait;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LanguagesRequest;
 use Illuminate\Support\Facades\Redirect;
 
 class LanguageController extends Controller
 {
     use MsgTrait;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->role !== 'admin') {
+                return redirect()->route('cars.index');
+            }
+            return $next($request);
+        });
+    }
 
     public function index()
     {

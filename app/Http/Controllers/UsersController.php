@@ -11,27 +11,30 @@ use Illuminate\Support\Facades\Redirect;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->role !=='admin') {
+                return redirect()->route('cars.index');
+            }
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         return Inertia::render('Users/Index', [
-            'users' => User::getOnlyAdmin()
-            ->orderByName()
+            'users' => User::orderByName()
             ->paginate(10)
             ->through(fn ($user) => [
                 'id' => $user->id,
                 'name' => $user->name,
                 'email' => $user->email,
+                'role' => $user->role,
             ]),
         ]);
     }
-/*             'cars' => Car::filter(request()->only('search'))
-                ->paginate(10)
-                ->through(fn ($car) => [
-                    'id' => $car->id,
-                    'name' => $car->name,
-                    'phone' => $car->vin,
-                    'status' => $car->status ? 'Увімкнено' : 'Вимкнено',
-                ]), */
+
     public function create()
     {
         return Inertia::render('Users/Create');
@@ -47,18 +50,14 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         return Inertia::render('Users/Edit', [
-            'user' => [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-            ],
+            'user' => $user
         ]);
     }
 
     public function update(UserRequest $request, User $user)
     {
 
-        $user->update($request->safe()->only('name', 'email'));
+        $user->update($request->safe()->except(['password']));
 
         if ($request->get('password')) {
             $user->update(['password' =>  $request->safe()['password']]);
@@ -70,18 +69,18 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         if (Auth::user()->id === $user->id) {
-            return Redirect::back()->with('error', 'Нельзя удалить текущего пользователя');
+            return Redirect::back()->with('error', 'Cannot delete current user');
         }
 
         $user->delete();
 
-        return Redirect::back()->with('success', 'Пользователь удален');
+        return Redirect::back()->with('success', 'User deleted');
     }
 
     public function restore(User $user)
     {
         $user->restore();
 
-        return Redirect::back()->with('success', 'Пользователь восстановлен');
+        return Redirect::back()->with('success', 'User restored');
     }
 }

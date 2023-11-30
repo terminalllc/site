@@ -1,10 +1,9 @@
 <?php
 
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Models\Proposal;
+
 
 /*
 |--------------------------------------------------------------------------

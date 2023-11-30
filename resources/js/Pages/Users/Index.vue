@@ -13,6 +13,7 @@
                 <tr class="text-left font-bold bg-gray-400">
                     <th class="px-4">#</th>
                     <th class="px-4">Name</th>
+                    <th class="px-4">Role</th>
                     <th class="px-4">Email</th>
                     <th class="pb-12 px-4" />
                 </tr>
@@ -22,6 +23,9 @@
                     </td>
                     <td class="px-4 border-t">
                         {{ user.name }}
+                    </td>
+                    <td class="px-4 border-t">
+                        {{ user.role }}
                     </td>
                     <td class="px-4 border-t">
                         {{ user.email }}

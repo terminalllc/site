@@ -5,12 +5,21 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SettingsRequest;
 use Illuminate\Support\Facades\Redirect;
 
 class SettingController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->role !== 'admin') {
+                return redirect()->route('cars.index');
+            }
+            return $next($request);
+        });
+    }
     /**
      * Show the form for editing the specified resource.
      */

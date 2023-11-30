@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Inertia\Middleware;
 use Illuminate\Http\Request;
 use App\Services\LanguageService;
+use Illuminate\Support\Facades\Auth;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -52,6 +53,7 @@ class HandleInertiaRequests extends Middleware
                     'noImagePath' => '/images/no-image-100.png',
                 ];
             },
+            'isAdmin'=> Auth::user()->role === 'admin',
             'langs' =>  LanguageService::getCodes(['code']),
             'default_lang' => LanguageService::getCodeDefault(),
             'flash' => function () use ($request) {

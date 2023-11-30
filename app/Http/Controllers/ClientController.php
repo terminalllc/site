@@ -3,9 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Models\Client;
 use Inertia\Inertia;
+use App\Models\Client;
 use App\Http\Traits\MsgTrait;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ClientsRequest;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,6 +19,9 @@ class ClientController extends Controller
         return Inertia::render('Clients/Index', [
             'filters' => request('search', []),
             'clients' => Client::filter(request()->only('search'))
+                ->when(Auth::user()->role !== 'admin', function ($query, $search) {
+                    $query->where('creater_id', Auth::id());
+                })
                 ->latest('updated_at')
                 ->paginate(50)
                 ->through(fn ($client) => [
