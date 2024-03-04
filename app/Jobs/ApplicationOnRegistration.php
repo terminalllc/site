@@ -229,7 +229,7 @@ class ApplicationOnRegistration implements ShouldQueue
             $fpdf->MultiCell(60, 5, $text, 0, 'C');
 
             $fpdf->SetXY(130, 260);
-            $text = iconv('UTF-8', 'cp1251//IGNORE', 'М.П.  ________________    Захарчук А. М.');
+            $text = iconv('UTF-8', 'cp1251//IGNORE', 'М.П.  ________________    Сівец В. В.');
             $fpdf->MultiCell(65, 5, $text, 0, 'C');
             $fpdf->SetXY(130, 265);
             $text = iconv('UTF-8', 'cp1251//IGNORE', '            (підпис)            (прізвище, ініціали)');
