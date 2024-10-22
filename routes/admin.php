@@ -33,10 +33,6 @@ Route::middleware('auth')->group(function () {
 
     // Dashboard.
     Route::get('/', function () {
-        $date1 = new \DateTime('2024-10-22');
-        $date2 = new \DateTime('2024-10-23');
-        $interval = $date1->diff($date2);
-        dd((int)$interval->days);
         return redirect()->route('cars.index');
     });
 
