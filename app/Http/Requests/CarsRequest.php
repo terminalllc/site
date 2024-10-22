@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Log;
 
 class CarsRequest extends FormRequest
 {
@@ -28,7 +29,7 @@ class CarsRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'vin' => 'required|string|max:17',
+            'vin' => ['required','string','max:17', Rule::unique('cars')->ignore($this->route('car')),],
             'containerImages' => 'nullable|array',
             'containerImages.*' => 'required',
             'terminalImages' => 'nullable|array',

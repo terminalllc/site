@@ -96,7 +96,7 @@ class Car extends Model
 
     public function scopeActive($query)
     {
-            $query->where('status',1);
+        $query->where('status',1);
     }
 
     public function client()
