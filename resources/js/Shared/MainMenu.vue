@@ -12,17 +12,26 @@
             </div>
             </Link>
             <template v-if="this.$page.props.isAdmin">
-                <Link class="group flex items-center justify-start py-2 text-center" :href="this.$route('setting.edit', 1)">
+                <Link class="group flex items-center justify-start py-2 text-center"
+                    :href="this.$route('setting.edit', 1)">
                 <div :class="isUrl('admin/settings') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">
                     Settings
                 </div>
                 </Link>
-                <Link class="group flex items-center justify-start py-2 text-center" :href="this.$route('languages.index')">
+                <Link class="group flex items-center justify-start py-2 text-center"
+                    :href="this.$route('calculations.index')">
+                <div :class="isUrl('admin/calculations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">
+                    Calculations
+                </div>
+                </Link>
+                <Link class="group flex items-center justify-start py-2 text-center"
+                    :href="this.$route('languages.index')">
                 <div :class="isUrl('admin/languages') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">
                     Languages
                 </div>
                 </Link>
-                <Link class="group flex items-center justify-start py-2 text-center" :href="this.$route('translations.index')">
+                <Link class="group flex items-center justify-start py-2 text-center"
+                    :href="this.$route('translations.index')">
                 <div :class="isUrl('admin/translations') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">
                     Translations
                 </div>
