@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Http\Requests\UserRequest;
+use App\Models\Calculation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -37,7 +38,9 @@ class UsersController extends Controller
 
     public function create()
     {
-        return Inertia::render('Users/Create');
+        return Inertia::render('Users/Create',[
+            'calculations'=> Calculation::get(),
+        ]);
     }
 
     public function store(UserRequest $request)
@@ -50,7 +53,8 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         return Inertia::render('Users/Edit', [
-            'user' => $user
+            'user' => $user,
+            'calculations' => Calculation::get(),
         ]);
     }
 

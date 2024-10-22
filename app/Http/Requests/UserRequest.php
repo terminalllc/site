@@ -30,11 +30,7 @@ class UserRequest extends FormRequest
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($this->route('user'))],
             'password' => ['nullable'],
             'role' => ['required', Rule::in(['admin', 'partner']),],
-            'is_calculation_amount_at_general_rate' => ['required', 'boolean'],
-            'amount_for_parking_first_seven_days' => [Rule::requiredIf(!$this->is_calculation_amount_at_general_rate)],
-            'amount_for_parking_general' => ['required'],
-            'amount_for_issuing_car' => [Rule::requiredIf($this->is_calculation_amount_at_general_rate)],
-
+            'calculation_id' => ['exists:calculations,id'],
         ];
     }
     public function messages()

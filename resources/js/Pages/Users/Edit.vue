@@ -12,20 +12,14 @@
                     <text-input v-model.trim="form.name" :error="form.errors.name" class-div="lg:w-1/2" label="Name" />
                     <text-input v-model.trim="form.email" :error="form.errors.email" class-div="lg:w-1/2"
                         label="Email" />
-                    <select-input v-model="form.role" :error="form.errors.role" class-div="lg:w-1/2"
-                        label="Role">
+                    <select-input v-model="form.role" :error="form.errors.role" class-div="lg:w-1/2" label="Role">
                         <option v-for="item in roles" :key="item" :value="item">{{ item }}</option>
                     </select-input>
-                    <text-input v-model.trim="form.password" :error="form.errors.password" class-div="lg:w-1/2" type="password"
-                        autocomplete="new-password" label="Password" />
-                    <div class="items-center mb-6 pb-8 pr-6 w-1/2">
-                        <label class="form-label"> Calculation of the amount for parking according to the general tariff? </label>
-                        <input v-model="form.is_calculation_amount_at_general_rate" class="mr-2 pl-6 w-6 h-6"
-                            type="checkbox" />
-                    </div>
-                    <text-input v-model.number="form.amount_for_parking_first_seven_days" :is-disabled="form.is_calculation_amount_at_general_rate" type="number" :error="form.errors.amount_for_parking_first_seven_days" class-div="lg:w-1/2" label="Amount for parking first seven days" />
-                    <text-input v-model.number="form.amount_for_parking_general" type="number" :error="form.errors.amount_for_parking_general" class-div="lg:w-1/2" label="Amount for parking general" />
-                    <text-input v-model.number="form.amount_for_issuing_car" :is-disabled="!form.is_calculation_amount_at_general_rate" type="number" :error="form.errors.amount_for_issuing_car" class-div="lg:w-1/2" label="Amount for issuing" />
+                    <text-input v-model.trim="form.password" :error="form.errors.password" class-div="lg:w-1/2"
+                        type="password" autocomplete="new-password" label="Password" />
+                    <select-input v-model="form.calculation_id" :error="form.errors.calculation_id" class-div="lg:w-1/2" label="Tariffs">
+                        <option v-for="item in calculations" :key="item.id" :value="item.id">{{ item.name }}</option>
+                    </select-input>
                 </div>
                 <div class="flex items-center justify-end px-8 py-4 w-full bg-gray-100 border-t border-gray-200">
                     <loading-button :disabled="form.processing" :loading="form.processing" class="btn-green"
@@ -56,6 +50,7 @@ export default {
     remember: "form",
     props: {
         user: Object,
+        calculations: Array,
     },
     data() {
         return {
@@ -64,10 +59,7 @@ export default {
                 email: this.user.email,
                 password: null,
                 role: this.user.role,
-                is_calculation_amount_at_general_rate: this.user.is_calculation_amount_at_general_rate,
-                amount_for_parking_first_seven_days: this.user.amount_for_parking_first_seven_days,
-                amount_for_parking_general: this.user.amount_for_parking_general,
-                amount_for_issuing_car: this.user.amount_for_issuing_car,
+                calculation_id: this.user.calculation_id
             }),
             roles: ['admin', 'partner'],
         };

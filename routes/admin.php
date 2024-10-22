@@ -10,6 +10,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\TranslationsController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\CalculationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,13 @@ Route::middleware('auth')->group(function () {
 
     // Dashboard.
     Route::get('/', function () {
+        $date1 = new \DateTime('2024-10-22');
+        $date2 = new \DateTime('2024-10-23');
+        $interval = $date1->diff($date2);
+        dd((int)$interval->days);
         return redirect()->route('cars.index');
     });
+
 
     // Users.
     Route::resource('users', UsersController::class);
@@ -44,6 +50,9 @@ Route::middleware('auth')->group(function () {
 
     // Clients.
     Route::resource('clients', ClientController::class);
+
+    // Calculations.
+    Route::resource('calculations', CalculationController::class);
 
     // Languages.
     Route::resource('languages', LanguageController::class);

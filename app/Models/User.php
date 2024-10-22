@@ -29,10 +29,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'is_calculation_amount_at_general_rate',
-        'amount_for_parking_first_seven_days',
-        'amount_for_parking_general',
-        'amount_for_issuing_car',
+        'calculation_id',
     ];
 
     /**
@@ -52,7 +49,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'is_calculation_amount_at_general_rate'=> 'boolean'
     ];
 
     public function scopeGetOnlyAdmin($query)
@@ -68,5 +64,10 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
+    }
+
+    public function calculation()
+    {
+        return $this->belongsTo(Calculation::class);
     }
 }
