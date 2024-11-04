@@ -28,6 +28,7 @@ class ClientsRequest extends FormRequest
             'phone' => 'nullable|string|min:10',
             'email' => 'nullable|email',
             'status' => 'boolean',
+            'calculation_id' => ['exists:calculations,id'],
         ];
     }
 }

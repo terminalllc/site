@@ -17,10 +17,6 @@
                     </select-input>
                     <text-input v-model.trim="form.password" :error="form.errors.password" class-div="lg:w-1/2"
                         type="password" autocomplete="new-password" label="Password" />
-                    <select-input v-model="form.calculation_id" :error="form.errors.calculation_id" class-div="lg:w-1/2"
-                        label="Tariffs">
-                        <option v-for="item in calculations" :key="item.id" :value="item.id">{{ item.name }}</option>
-                    </select-input>>
                 </div>
                 <div class="flex items-center justify-end px-8 py-4 w-full bg-gray-100 border-t border-gray-200">
                     <loading-button :disabled="form.processing" :loading="form.processing" class="btn-green"
@@ -59,7 +55,6 @@ export default {
                 email: null,
                 password: null,
                 role: null,
-                calculation_id: null,
             }),
             roles: ['admin', 'partner'],
         };

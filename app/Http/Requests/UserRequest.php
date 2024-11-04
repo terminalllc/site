@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
             'email' => ['required', 'max:50', 'email', Rule::unique('users')->ignore($this->route('user'))],
             'password' => ['nullable'],
             'role' => ['required', Rule::in(['admin', 'partner']),],
-            'calculation_id' => ['exists:calculations,id'],
+            
         ];
     }
     public function messages()

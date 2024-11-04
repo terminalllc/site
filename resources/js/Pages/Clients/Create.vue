@@ -32,13 +32,18 @@ import Layout from "@/Shared/Layout.vue";
 import LoadingButton from "@/Shared/LoadingButton.vue";
 import TextInput from "@/Shared/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
+import SelectInput from "@/Shared/SelectInput.vue";
 
 export default {
     components: {
         LoadingButton,
         TextInput,
+        SelectInput,
     },
     layout: Layout,
+    props: {
+        calculations: Array,
+    },
     remember: "form",
     data() {
         return {
@@ -47,6 +52,7 @@ export default {
                 phone: null,
                 email: null,
                 status: true,
+                calculation_id: null,
             }),
         };
     },

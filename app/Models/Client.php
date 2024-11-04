@@ -20,6 +20,7 @@ class Client extends Model
         'status',
         'creater',
         'updater',
+        'calculation_id',
     ];
 
     protected static function booted()
@@ -52,4 +53,8 @@ class Client extends Model
         $query->where('status', 1);
     }
 
+    public function calculation()
+    {
+        return $this->belongsTo(Calculation::class);
+    }
 }

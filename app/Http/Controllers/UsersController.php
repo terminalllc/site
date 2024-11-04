@@ -38,9 +38,7 @@ class UsersController extends Controller
 
     public function create()
     {
-        return Inertia::render('Users/Create',[
-            'calculations'=> Calculation::get(),
-        ]);
+        return Inertia::render('Users/Create');
     }
 
     public function store(UserRequest $request)
@@ -54,7 +52,6 @@ class UsersController extends Controller
     {
         return Inertia::render('Users/Edit', [
             'user' => $user,
-            'calculations' => Calculation::get(),
         ]);
     }
 

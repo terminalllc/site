@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Client;
+use App\Models\Calculation;
 use App\Http\Traits\MsgTrait;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ClientsRequest;
@@ -24,7 +26,7 @@ class ClientController extends Controller
                 })
                 ->latest('updated_at')
                 ->paginate(50)
-                ->through(fn ($client) => [
+                ->through(fn($client) => [
                     'id' => $client->id,
                     'name' => $client->name,
                     'phone' => $client->phone,
@@ -41,7 +43,12 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Clients/Create');
+        return Inertia::render(
+            'Clients/Create',
+            [
+                'calculations' => Calculation::get(),
+            ]
+        );
     }
 
     /**
@@ -60,7 +67,11 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return Inertia::render('Clients/Edit', ['client' => $client]);
+        return Inertia::render('Clients/Edit',
+        [
+            'client' => $client,
+            'calculations' => Calculation::get(),
+        ]);
     }
 
     /**

@@ -29,7 +29,6 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'calculation_id',
     ];
 
     /**
@@ -66,8 +65,4 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::needsRehash($password) ? Hash::make($password) : $password;
     }
 
-    public function calculation()
-    {
-        return $this->belongsTo(Calculation::class);
-    }
 }
