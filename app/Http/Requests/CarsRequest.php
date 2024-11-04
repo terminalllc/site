@@ -65,53 +65,56 @@ class CarsRequest extends FormRequest
 
                 $client = Client::whereId($this->client_id)->first();
 
-                // количество дней
-                $days = $this->out_terminal_at === $this->on_terminal_at
-                    ? 1
-                    : (int)$interval->days;
+                if (optional($client->calculation)->exists()) {
+                    $calculation = $client->calculation;
+                    // количество дней
+                    $days = $this->out_terminal_at === $this->on_terminal_at
+                        ? 1
+                        : (int)$interval->days;
 
-                switch (true) {
-                    case ($days <= 1):
-                        $this->merge([
-                            'payment_summa' => $client->calculation()->rate_14
-                                + $client->calculation()->rate_one_time,
-                        ]);
-                        break;
-                    case ($days <= 14):
-                        $this->merge([
-                            'payment_summa' => $days
-                                * $client->calculation()->rate_14
-                                + $client->calculation()->rate_one_time,
-                        ]);
-                        break;
-                    case ($days <= 30):
-                        $rest_day = $days - 14;
-                        $this->merge([
-                            'payment_summa' =>
-                            (14 * $client->calculation()->rate_14)
-                            + ($rest_day * $client->calculation()->rate_30)
-                            + $client->calculation()->rate_one_time,
-                        ]);
-                        break;
-                    case ($days <= 60):
-                        $rest_day = $days - 30;
-                        $this->merge([
-                            'payment_summa' => (14 * $client->calculation()->rate_14)
-                                + (16 * $client->calculation()->rate_30)
-                                + ($rest_day * $client->calculation()->rate_60)
-                                + $client->calculation()->rate_one_time,
-                        ]);
-                        break;
-                    default:
-                        $rest_day = $days - 60;
-                        $this->merge([
-                            'payment_summa' => (14 * $client->calculation()->rate_14)
-                                + (16 * $client->calculation()->rate_30)
-                                + (30 * $client->calculation()->rate_60)
-                                + ($rest_day * $client->calculation()->rate_other)
-                                + $client->calculation()->rate_one_time,
-                        ]);
-                        break;
+                    switch (true) {
+                        case ($days <= 1):
+                            $this->merge([
+                                'payment_summa' => $calculation->rate_14
+                                    + $calculation->rate_one_time,
+                            ]);
+                            break;
+                        case ($days <= 14):
+                            $this->merge([
+                                'payment_summa' => $days
+                                    * $calculation->rate_14
+                                    + $calculation->rate_one_time,
+                            ]);
+                            break;
+                        case ($days <= 30):
+                            $rest_day = $days - 14;
+                            $this->merge([
+                                'payment_summa' =>
+                                (14 * $calculation->rate_14)
+                                + ($rest_day * $calculation->rate_30)
+                                + $calculation->rate_one_time,
+                            ]);
+                            break;
+                        case ($days <= 60):
+                            $rest_day = $days - 30;
+                            $this->merge([
+                                'payment_summa' => (14 * $calculation->rate_14)
+                                    + (16 * $calculation->rate_30)
+                                    + ($rest_day * $calculation->rate_60)
+                                    + $calculation->rate_one_time,
+                            ]);
+                            break;
+                        default:
+                            $rest_day = $days - 60;
+                            $this->merge([
+                                'payment_summa' => (14 * $calculation->rate_14)
+                                    + (16 * $calculation->rate_30)
+                                    + (30 * $calculation->rate_60)
+                                    + ($rest_day * $calculation->rate_other)
+                                    + $calculation->rate_one_time,
+                            ]);
+                            break;
+                    }
                 }
             }
         }
