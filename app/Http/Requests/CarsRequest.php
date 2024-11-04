@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
+use App\Models\Client;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -54,13 +55,15 @@ class CarsRequest extends FormRequest
      */
     protected function prepareForValidation()
     {
-        if (!$this->payment_status) {
+        if (!$this->payment_status && !is_null($this->client_id)) {
 
             if ($this->out_terminal_at && $this->on_terminal_at) {
 
                 $date1 = new \DateTime($this->out_terminal_at);
                 $date2 = new \DateTime($this->on_terminal_at);
                 $interval = $date1->diff($date2);
+
+                $client = Client::whereId($this->client_id)->first();
 
                 // количество дней
                 $days = $this->out_terminal_at === $this->on_terminal_at
@@ -70,43 +73,43 @@ class CarsRequest extends FormRequest
                 switch (true) {
                     case ($days <= 1):
                         $this->merge([
-                            'payment_summa' => Auth::user()->rate_14
-                                + Auth::user()->rate_one_time,
+                            'payment_summa' => $client->calculation()->rate_14
+                                + $client->calculation()->rate_one_time,
                         ]);
                         break;
                     case ($days <= 14):
                         $this->merge([
                             'payment_summa' => $days
-                                * Auth::user()->rate_14
-                                + Auth::user()->rate_one_time,
+                                * $client->calculation()->rate_14
+                                + $client->calculation()->rate_one_time,
                         ]);
                         break;
                     case ($days <= 30):
                         $rest_day = $days - 14;
                         $this->merge([
                             'payment_summa' =>
-                            (14 * Auth::user()->rate_14)
-                            + ($rest_day * Auth::user()->rate_30)
-                            + Auth::user()->rate_one_time,
+                            (14 * $client->calculation()->rate_14)
+                            + ($rest_day * $client->calculation()->rate_30)
+                            + $client->calculation()->rate_one_time,
                         ]);
                         break;
                     case ($days <= 60):
                         $rest_day = $days - 30;
                         $this->merge([
-                            'payment_summa' => (14 * Auth::user()->rate_14)
-                                + (16 * Auth::user()->rate_30)
-                                + ($rest_day * Auth::user()->rate_60)
-                                + Auth::user()->rate_one_time,
+                            'payment_summa' => (14 * $client->calculation()->rate_14)
+                                + (16 * $client->calculation()->rate_30)
+                                + ($rest_day * $client->calculation()->rate_60)
+                                + $client->calculation()->rate_one_time,
                         ]);
                         break;
                     default:
                         $rest_day = $days - 60;
                         $this->merge([
-                            'payment_summa' => (14 * Auth::user()->rate_14)
-                                + (16 * Auth::user()->rate_30)
-                                + (30 * Auth::user()->rate_60)
-                                + ($rest_day * Auth::user()->rate_other)
-                                + Auth::user()->rate_one_time,
+                            'payment_summa' => (14 * $client->calculation()->rate_14)
+                                + (16 * $client->calculation()->rate_30)
+                                + (30 * $client->calculation()->rate_60)
+                                + ($rest_day * $client->calculation()->rate_other)
+                                + $client->calculation()->rate_one_time,
                         ]);
                         break;
                 }
