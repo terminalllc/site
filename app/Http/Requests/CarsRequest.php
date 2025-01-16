@@ -70,7 +70,7 @@ class CarsRequest extends FormRequest
                     // количество дней
                     $days = $this->out_terminal_at === $this->on_terminal_at
                         ? 1
-                        : (int)$interval->days;
+                        : (int)$interval->days +1 ;
                     Log::info(PHP_EOL . 'Date on terminal: ' . (string)$date2->format('d-m-Y') . PHP_EOL .
                     'Date off terminal: ' . (string)$date1->format('d-m-Y') . PHP_EOL .
                     'Diff: ' . $days . PHP_EOL .
