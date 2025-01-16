@@ -71,8 +71,8 @@ class CarsRequest extends FormRequest
                     $days = $this->out_terminal_at === $this->on_terminal_at
                         ? 1
                         : (int)$interval->days;
-                    Log::info('Date on terminal: ' . (string)$date2 . PHP_EOL .
-                    'Date off terminal: ' . (string)$date1 . PHP_EOL .
+                    Log::info('Date on terminal: ' . (string)$date2->format('d-m-Y') . PHP_EOL .
+                    'Date off terminal: ' . (string)$date1->format('d-m-Y') . PHP_EOL .
                     'Diff: ' . $days . PHP_EOL .
                     'Rate: ' . $calculation->rate_14 . PHP_EOL .
                     'Rate once: ' . $calculation->rate_one_time);
