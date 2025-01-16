@@ -73,7 +73,9 @@ class CarsRequest extends FormRequest
                         : (int)$interval->days;
                     Log::info('Date on terminal:' . (string)$date2->format('%R%a') . PHP_EOL .
                     'Date off terminal:' . (string)$date1->format('%R%a'). PHP_EOL .
-                    'Diff' . $days);
+                    'Diff' . $days . PHP_EOL .
+                    'Rate' . $calculation->rate_14 . PHP_EOL .
+                    'Rate once' . $calculation->rate_one_time);
                     switch (true) {
                         case ($days <= 1):
                             $this->merge([
@@ -117,6 +119,7 @@ class CarsRequest extends FormRequest
                             ]);
                             break;
                     }
+                    
                 }
             }
         }
