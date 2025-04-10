@@ -91,7 +91,7 @@ class PowerOfAttorneyImport implements ShouldQueue
             $text = iconv('UTF-8', 'cp1251//IGNORE', 'ТОВ «ЕЙ ДЖІ ТЕРМІНАЛ»');
             $fpdf->Cell(100, 10, $text);
 
-            $text = iconv('UTF-8', 'cp1251//IGNORE', '___________________ Сівец В. В.');
+            $text = iconv('UTF-8', 'cp1251//IGNORE', '_______________ Прокопенко Ю.В.');
             $fpdf->MultiCell(90, 10, $text, 0, 'R');
             $phone = Str::remove('+',$this->proposal->phone_driver);
             $phone = Str::remove(' ', $phone);
